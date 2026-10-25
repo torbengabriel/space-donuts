@@ -1,9 +1,11 @@
 <main class="hero">
   <header class="navbar">
+    <!-- Brand logo -->
     <a class="logo" href="/" aria-label="Space Donuts Home">
-      <img ngSrc="/images/space-donuts-logo.png" alt="Space Donuts" height="807" width="1950" />
+      <img src="/images/space-donuts-logo.png" alt="Space Donuts" />
     </a>
 
+    <!-- Main navigation -->
     <nav class="navigation" aria-label="Main navigation">
       <a href="/" class="nav-link active">Home</a>
       <a href="#donuts" class="nav-link">Donuts</a>
@@ -12,8 +14,17 @@
       <a href="#about" class="nav-link">About</a>
     </nav>
 
+    <!-- Shopping actions -->
     <div class="nav-actions">
-      <!-- search bar, checkout button, sign in button etc. -->
+      <button class="icon-button" type="button" aria-label="Search">
+        Search
+      </button>
+
+      <a href="#cart" class="cart-link" aria-label="Shopping cart">
+        Cart <span class="cart-count">0</span>
+      </a>
+
+      <a href="#signin" class="sign-in-button">Sign In</a>
     </div>
   </header>
 </main>
