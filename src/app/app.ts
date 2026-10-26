@@ -2,9 +2,10 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { DonutList } from './donuts/donut-list/donut-list';
+import { LucideShoppingCart } from '@lucide/angular';
 
 @Component({
-  imports: [RouterOutlet, NgOptimizedImage, DonutList],
+  imports: [RouterOutlet, NgOptimizedImage, DonutList, LucideShoppingCart],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',

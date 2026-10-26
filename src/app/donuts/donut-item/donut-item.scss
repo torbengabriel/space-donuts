@@ -1,11 +1,72 @@
 .donut-card {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   box-sizing: border-box;
+  overflow: hidden;
+
+  border: 1px solid #f0e4ed;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgb(50 20 40 / 4%);
+
+  transition:
+    box-shadow 200ms ease,
+    border-color 200ms ease;
+
+  &:hover {
+    border-color: #e8c6df;
+    box-shadow: 0 4px 14px rgb(50 20 40 / 8%);
+  }
 }
 
-.donut-card img {
+.donut-image {
   display: block;
   width: 100%;
-  height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
+}
+
+.donut-card-content {
+  flex: 1;
+  padding: 1rem 1rem 0.5rem;
+
+  h3 {
+    margin: 0 0 0.5rem;
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+.donut-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+.donut-price {
+  font-weight: 700;
+}
+
+.add-to-cart-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+
+  background-color: var(--color-primary);
+  color: white;
+  cursor: pointer;
 }
