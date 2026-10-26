@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "title": "Black Hole Brownie",
+    "description": "A rich chocolate donut with a mysterious center.",
+    "price": 4.5,
+    "image": "/images/donuts/black-hole-brownie.png"
+  },
+  {
+    "id": 2,
+    "title": "Saturn's Ring",
+    "description": "Classic vanilla with pink glaze and cosmic sprinkles.",
+    "price": 3.5,
+    "image": "/images/donuts/saturns-ring.png"
+  },
+  {
+    "id": 3,
+    "title": "Milky Way Marshmallow",
+    "description": "Fluffy, sweet and out of this world.",
+    "price": 4.2,
+    "image": "/images/donuts/milky-way-marshmallow.png"
+  },
+  {
+    "id": 4,
+    "title": "Marshmallow Madness",
+    "description": "Red velvet with a creamy marshmallow filling.",
+    "price": 4.4,
+    "image": "/images/donuts/marshmallow-madness.png"
+  },
+  {
+    "id": 5,
+    "title": "Moon Crater",
+    "description": "Vanilla glaze with crunchy chocolate craters.",
+    "price": 3.9,
+    "image": "/images/donuts/moon-crater.png"
+  },
+  {
+    "id": 6,
+    "title": "Galactic Glaze",
+    "description": "A vanilla donut topped with glossy icing and shimmering cosmic candy.",
+    "price": 3.8,
+    "image": "/images/donuts/galactic-glaze.png"
+  },
+  {
+    "id": 7,
+    "title": "Cosmic Caramel",
+    "description": "Silky caramel glaze with crunchy toffee and a hint of sea salt.",
+    "price": 4.1,
+    "image": "/images/donuts/cosmic-caramel.png"
+  },
+  {
+    "id": 8,
+    "title": "Strawberry Supernova",
+    "description": "Sweet strawberry icing, berry crumble and a creamy drizzle.",
+    "price": 3.7,
+    "image": "/images/donuts/strawberry-supernova.png"
+  },
+  {
+    "id": 9,
+    "title": "Dubai Chocolate Dream",
+    "description": "Rich chocolate glaze, crunchy pistachio pieces and a luscious kunafa-inspired filling.",
+    "price": 4.3,
+    "image": "/images/donuts/dubai-chocolate-dream.png"
+  },
+  {
+    "id": 10,
+    "title": "Blue Nebula",
+    "description": "Deep-blue and violet galaxy glaze scattered with sparkling sugar stars.",
+    "price": 4.0,
+    "image": "/images/donuts/blue-nebula.png"
+  }
+]

@@ -1,0 +1,9 @@
+<section class="donut-section" id="donuts">
+  @if (donuts$ | async; as donuts) {
+    <div class="donut-list">
+      @for (donut of donuts; track donut.id) {
+        <app-donut-item [donut]="donut" />
+      }
+    </div>
+  }
+</section>

@@ -1,0 +1,25 @@
+<article class="donut-card">
+  <img
+    [src]="donut().image"
+    [alt]="donut().title"
+  />
+
+  <div class="donut-card-content">
+    <h3>{{ donut().title }}</h3>
+
+    <p>{{ donut().description }}</p>
+
+    <div class="donut-card-footer">
+      <span class="price">
+        {{ donut().price | currency:'EUR':'symbol':'1.2-2':'de-DE' }}
+      </span>
+
+      <button
+        type="button"
+        [attr.aria-label]="'Add ' + donut().title + ' to cart '"
+      >
+        Add to cart
+      </button>
+    </div>
+  </div>
+</article>
