@@ -1,34 +1,5 @@
 <main class="hero">
-  <header class="navbar">
-    <!-- Brand logo -->
-    <a class="logo" href="/" aria-label="Space Donuts Home">
-      <img src="/images/space-donuts-logo.png" alt="Space Donuts" />
-    </a>
-
-    <!-- Main navigation -->
-    <nav class="navigation" aria-label="Main navigation">
-      <a href="/" class="nav-link active">Home</a>
-      <a href="#donuts" class="nav-link">Donuts</a>
-      <a href="#stores" class="nav-link">Stores</a>
-      <a href="#mission" class="nav-link">Our Mission</a>
-      <a href="#about" class="nav-link">About</a>
-    </nav>
-
-    <!-- Shopping actions -->
-    <div class="nav-actions">
-      <button class="icon-button" type="button" aria-label="Search">
-        Search
-      </button>
-
-      <button class="cart-button" type="button" aria-label="Warenkorb">
-        <svg lucideShoppingCart [size]="24"></svg>
-
-        <span class="cart-count">3</span>
-      </button>
-
-      <a href="#signin" class="sign-in-button">Sign In</a>
-    </div>
-  </header>
+  <app-header></app-header>
 </main>
 <section class="donut-section" id="donuts">
   <h2>Find Your Favourite Donut</h2>
@@ -36,6 +7,5 @@
     Discover delicious creations from across the galaxy.
   </p>
   <app-donut-list></app-donut-list>
-  <!-- donut items -->
 </section>
 <router-outlet />
