@@ -4,6 +4,12 @@
 
 Space Donuts is a learning project in which I build a fictional online donut shop set in space. The project serves as a practical way to explore modern Angular features, experiment with different approaches, and deepen my understanding of Angular through hands-on development.
 
+Screen Design
+
+<img src="docs/images/space-donuts-screendesign.png"
+alt="Space Donuts storefront design"
+width="800">
+
 ## 🎯 Project Goals
 
 The goal is to build a small but realistic web application while exploring modern Angular development.
@@ -39,10 +45,10 @@ Each article explores a specific topic, explains the decisions behind the implem
 
 **Articles:**
 
-- Coming soon — Project setup with Angular 22
-
-*Article links will be added as the series progresses.*
-
+1. Part 1 – From a Blank Project to a Cosmic Storefront
+   https://medium.com/@torbengab/building-space-donuts-with-angular-22-part-1-from-a-blank-project-to-a-cosmic-storefront-cdd51723b9fd
+2. Part 2 – From JSON Data to Reusable Components
+   https://medium.com/@torbengab/building-space-donuts-with-angular-22-part-2-from-json-data-to-reusable-components-16f42ca76084?sharedUserId=torbengab
 ## 🚀 Getting Started
 
 ### Prerequisites
