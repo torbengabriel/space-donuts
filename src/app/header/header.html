@@ -19,11 +19,20 @@
       Search
     </button>
 
-    <button class="cart-button" type="button" aria-label="Warenkorb">
+    <button class="cart-button" type="button" aria-label="Warenkorb" (click)="isCartOpen.set(true)">
       <svg lucideShoppingCart [size]="24"></svg>
 
       <span class="cart-count">3</span>
     </button>
+
+    <app-overlay
+      [open]="isCartOpen()"
+      (closed)="isCartOpen.set(false)"
+    >
+      <h2>Shopping Cart</h2>
+
+      <p>Your selected donuts will appear here.</p>
+    </app-overlay>
 
     <a href="#signin" class="sign-in-button">Sign In</a>
   </div>

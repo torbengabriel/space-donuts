@@ -1,0 +1,26 @@
+@if (open()) {
+  <div
+    class="overlay-backdrop"
+    (click)="closed.emit()"
+  >
+    <section
+      class="overlay-panel"
+      role="dialog"
+      aria-modal="true"
+      (click)="$event.stopPropagation()"
+    >
+      <button
+        class="close-button"
+        type="button"
+        aria-label="Close overlay"
+        (click)="closed.emit()"
+      >
+        <svg lucideX [size]="24"></svg>
+      </button>
+
+      <div class="overlay-content">
+        <ng-content />
+      </div>
+    </section>
+  </div>
+}

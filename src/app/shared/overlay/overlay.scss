@@ -1,0 +1,70 @@
+:host {
+  --overlay-z-index: 1000;
+}
+
+.overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--overlay-z-index);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1rem;
+  box-sizing: border-box;
+
+  background-color: rgb(0 0 0 / 50%);
+}
+
+.overlay-panel {
+  position: relative;
+
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+
+  padding: 2rem;
+  border-radius: 1rem;
+
+  background-color: white;
+  box-shadow: 0 12px 40px rgb(0 0 0 / 20%);
+}
+
+.close-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: transparent;
+  color: #555;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f5f5f5;
+    color: #222;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.overlay-content {
+  padding-top: 1rem;
+}
