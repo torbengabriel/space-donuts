@@ -1,17 +1,13 @@
-import { Component, inject, signal } from '@angular/core';
-import { LucideShoppingCart } from '@lucide/angular';
-import { Overlay } from '../shared/overlay/overlay';
+import { Component, inject } from '@angular/core';
 import { CartStore } from '../cart/cart.store';
-import { CartOverlay } from '../cart/cart-overlay/cart-overlay';
+import { CartButton } from '../cart/cart-button/cart-button';
 
 @Component({
-  imports: [LucideShoppingCart, Overlay, CartOverlay],
+  imports: [CartButton],
   selector: 'app-header',
   styleUrl: './header.scss',
   templateUrl: './header.html',
 })
 export class Header {
   readonly cartStore = inject(CartStore);
-
-  readonly isCartOpen = signal(false);
 }

@@ -1,0 +1,9 @@
+<button class="cart-button" type="button" aria-label="Shopping Cart" (click)="clicked.emit()">
+  <svg lucideShoppingCart [size]="24"></svg>
+
+  @if (cartStore.totalQuantity() > 0) {
+    <span class="cart-count">
+      {{ cartStore.totalQuantity() }}
+    </span>
+  }
+</button>

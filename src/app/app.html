@@ -1,11 +1,24 @@
 <main class="hero">
-  <app-header></app-header>
+  <app-header #headerElement/>
 </main>
+
+@if (showStickyCart()) {
+  <div class="sticky-cart">
+    <app-cart-button (clicked)="cartStore.openCart()" />
+  </div>
+}
+
 <section class="donut-section" id="donuts">
   <h2>Find Your Favourite Donut</h2>
   <p class="section-description">
     Discover delicious creations from across the galaxy.
   </p>
-  <app-donut-list></app-donut-list>
+  <app-donut-list/>
 </section>
+
 <router-outlet />
+
+<app-cart-overlay
+  [open]="cartStore.isCartOpen()"
+  (closed)="cartStore.closeCart()"
+/>
