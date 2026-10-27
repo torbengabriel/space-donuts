@@ -1,0 +1,36 @@
+<app-overlay
+  [open]="open()"
+  (closed)="closed.emit()"
+>
+  <h2>Shopping Cart</h2>
+
+  @if (cartStore.items().length === 0) {
+    <p>Your shopping cart is empty.</p>
+  } @else {
+    <div class="cart-items">
+      @for (item of cartStore.items(); track item.donut.id) {
+        <div class="cart-item">
+          <img
+            class="cart-item-image"
+            [src]="item.donut.image"
+            [alt]="item.donut.title"
+          />
+
+          <h3 class="cart-item-title">
+            {{ item.donut.title }}
+          </h3>
+
+          <app-quantity-selector
+            [quantity]="item.quantity"
+            (increment)="cartStore.increaseQuantity(item.donut.id)"
+            (decrement)="cartStore.decreaseQuantity(item.donut.id)"
+          />
+
+          <span class="cart-item-price">
+        {{ item.donut.price * item.quantity | currency:'EUR' }}
+      </span>
+        </div>
+      }
+    </div>
+  }
+</app-overlay>
