@@ -40,6 +40,29 @@
   white-space: nowrap;
 }
 
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  margin-top: 1rem;
+  padding-top: 1.25rem;
+
+  border-top: 1px solid #f0e4ed;
+}
+
+.cart-total-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.cart-total-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 // Responsive layout for smaller screens
 @media (max-width: 480px) {
   .cart-item {

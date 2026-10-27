@@ -1,4 +1,4 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, computed, inject, input, output } from '@angular/core';
 import { Overlay } from '../../shared/overlay/overlay';
 import { CartStore } from '../cart.store';
 import { CurrencyPipe } from '@angular/common';
@@ -15,4 +15,9 @@ export class CartOverlay {
 
   readonly open = input.required<boolean>();
   readonly closed = output<void>();
+
+  readonly totalPrice = computed(() => this.cartStore.items().reduce((acc, item) => {
+      return acc + item.donut.price * item.quantity;
+    }, 0)
+  );
 }

@@ -27,10 +27,18 @@
           />
 
           <span class="cart-item-price">
-        {{ item.donut.price * item.quantity | currency:'EUR' }}
-      </span>
+            {{ item.donut.price * item.quantity | currency:'EUR' }}
+          </span>
         </div>
       }
+    </div>
+    
+    <div class="cart-footer">
+      <span class="cart-total-label">Total</span>
+
+      <span class="cart-total-price">
+    {{ totalPrice() | currency:'EUR' }}
+  </span>
     </div>
   }
 </app-overlay>
