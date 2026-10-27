@@ -8,13 +8,15 @@ import { Component, input, output } from '@angular/core';
 })
 export class QuantitySelector {
   readonly quantity = input.required<number>();
-  readonly quantityChange = output<number>();
+
+  readonly increment = output<void>();
+  readonly decrement = output<void>();
 
   increaseQuantity(): void {
-    this.quantityChange.emit(this.quantity() + 1);
+    this.increment.emit();
   }
 
   decreaseQuantity(): void {
-    this.quantityChange.emit(this.quantity() - 1);
+    this.decrement.emit();
   }
 }

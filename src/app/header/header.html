@@ -19,7 +19,7 @@
       Search
     </button>
 
-    <button class="cart-button" type="button" aria-label="Warenkorb" (click)="isCartOpen.set(true)">
+    <button class="cart-button" type="button" aria-label="Shopping Cart" (click)="isCartOpen.set(true)">
       <svg lucideShoppingCart [size]="24"></svg>
 
      @if (cartStore.totalQuantity() > 0) {
@@ -29,14 +29,7 @@
      }
     </button>
 
-    <app-overlay
-      [open]="isCartOpen()"
-      (closed)="isCartOpen.set(false)"
-    >
-      <h2>Shopping Cart</h2>
-
-      <p>Your selected donuts will appear here.</p>
-    </app-overlay>
+    <app-cart-overlay [open]="isCartOpen()" (closed)="isCartOpen.set(false)"/>
 
     <a href="#signin" class="sign-in-button">Sign In</a>
   </div>

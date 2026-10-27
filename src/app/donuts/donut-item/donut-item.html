@@ -28,7 +28,9 @@
       } @else {
         <app-quantity-selector
           [quantity]="quantity()"
-          (quantityChange)="onQuantityChange($event)"/>
+          (increment)="cartStore.increaseQuantity(donut().id)"
+          (decrement)="cartStore.decreaseQuantity(donut().id)"
+        />
       }
     </div>
 </article>

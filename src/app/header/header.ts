@@ -2,9 +2,10 @@ import { Component, inject, signal } from '@angular/core';
 import { LucideShoppingCart } from '@lucide/angular';
 import { Overlay } from '../shared/overlay/overlay';
 import { CartStore } from '../cart/cart.store';
+import { CartOverlay } from '../cart/cart-overlay/cart-overlay';
 
 @Component({
-  imports: [LucideShoppingCart, Overlay],
+  imports: [LucideShoppingCart, Overlay, CartOverlay],
   selector: 'app-header',
   styleUrl: './header.scss',
   templateUrl: './header.html',
