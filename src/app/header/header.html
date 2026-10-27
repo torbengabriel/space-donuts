@@ -22,7 +22,11 @@
     <button class="cart-button" type="button" aria-label="Warenkorb" (click)="isCartOpen.set(true)">
       <svg lucideShoppingCart [size]="24"></svg>
 
-      <span class="cart-count">3</span>
+     @if (cartStore.totalQuantity() > 0) {
+       <span class="cart-count">
+         {{ cartStore.totalQuantity() }}
+       </span>
+     }
     </button>
 
     <app-overlay

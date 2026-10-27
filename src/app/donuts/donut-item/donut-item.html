@@ -16,12 +16,19 @@
         {{ donut().price | currency:'EUR':'symbol':'1.2-2':'de-DE' }}
       </span>
 
-      <button
-        class="add-to-cart-button"
-        type="button"
-        [attr.aria-label]="'Add ' + donut().title + ' to cart '"
-      >
-        <svg lucideShoppingCart [size]="20"></svg>
-      </button>
+      @if (quantity() === 0) {
+        <button
+          class="add-to-cart-button"
+          type="button"
+          [attr.aria-label]="'Add ' + donut().title + ' to cart '"
+          (click)="addToCart()"
+        >
+          <svg lucideShoppingCart [size]="20"></svg>
+        </button>
+      } @else {
+        <app-quantity-selector
+          [quantity]="quantity()"
+          (quantityChange)="onQuantityChange($event)"/>
+      }
     </div>
 </article>

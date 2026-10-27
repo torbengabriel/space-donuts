@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { LucideShoppingCart } from '@lucide/angular';
 import { Overlay } from '../shared/overlay/overlay';
+import { CartStore } from '../cart/cart.store';
 
 @Component({
   imports: [LucideShoppingCart, Overlay],
@@ -9,5 +10,7 @@ import { Overlay } from '../shared/overlay/overlay';
   templateUrl: './header.html',
 })
 export class Header {
+  readonly cartStore = inject(CartStore);
+
   readonly isCartOpen = signal(false);
 }
