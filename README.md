@@ -63,6 +63,9 @@ Each article explores a specific topic, explains the decisions behind the implem
 6. Part 6 – Building the Shopping Cart and Understanding Computed Signals  
    [Read on Medium](https://medium.com/@torbengab/building-space-donuts-with-angular-22-part-5-building-the-shopping-cart-and-understanding-aa31be48e21a?sharedUserId=torbengab)
 
+7. Part 7 – Adding a Floating Cart Button to Our Angular 22 Shop  
+   [Read on Medium](https://medium.com/@torbengab/adding-a-floating-cart-button-to-our-angular-22-shop-b3e40c119ac7?sharedUserId=torbengab)
+
 ## 🚀 Getting Started
 
 ### Prerequisites
