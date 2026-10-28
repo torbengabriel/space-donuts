@@ -19,9 +19,9 @@ export const CartStore = signalStore(
 
   withComputed(({ items }) => ({
     totalQuantity: computed(() => items().reduce((total, item) => total + item.quantity, 0)),
-
+    isEmpty: computed(() => items().length === 0),
     totalPrice: computed(() =>
-      items().reduce((total, item) => total + item.donut.price * item.quantity, 0),
+      items().reduce((sum, item) => sum + item.donut.price * item.quantity, 0),
     ),
   })),
 

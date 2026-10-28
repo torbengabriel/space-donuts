@@ -13,7 +13,7 @@
 
     <div class="donut-card-footer">
       <span class="donut-price">
-        {{ donut().price | currency:'EUR':'symbol':'1.2-2':'de-DE' }}
+        {{ donut().price | currency }}
       </span>
 
       @if (quantity() === 0) {
