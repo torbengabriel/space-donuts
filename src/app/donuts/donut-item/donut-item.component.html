@@ -1,9 +1,5 @@
 <article class="donut-card">
-  <img
-    class="donut-image"
-    [src]="donut().image"
-    [alt]="donut().title"
-  />
+  <img class="donut-image" [src]="donut().image" [alt]="donut().title" />
 
   <div class="donut-card-content">
     <h3>{{ donut().title }}</h3>
@@ -11,26 +7,26 @@
     <p>{{ donut().description }}</p>
   </div>
 
-    <div class="donut-card-footer">
-      <span class="donut-price">
-        {{ donut().price | currency }}
-      </span>
+  <div class="donut-card-footer">
+    <span class="donut-price">
+      {{ donut().price | currency }}
+    </span>
 
-      @if (quantity() === 0) {
-        <button
-          class="add-to-cart-button"
-          type="button"
-          [attr.aria-label]="'Add ' + donut().title + ' to cart '"
-          (click)="cartStore.addDonut(this.donut())"
-        >
-          <svg lucideShoppingCart [size]="20"></svg>
-        </button>
-      } @else {
-        <app-quantity-selector
-          [quantity]="quantity()"
-          (increment)="cartStore.increaseQuantity(donut().id)"
-          (decrement)="cartStore.decreaseQuantity(donut().id)"
-        />
-      }
-    </div>
+    @if (quantity() === 0) {
+      <button
+        class="add-to-cart-button"
+        type="button"
+        [attr.aria-label]="'Add ' + donut().title + ' to cart '"
+        (click)="cartStore.addDonut(this.donut())"
+      >
+        <svg lucideShoppingCart [size]="20"></svg>
+      </button>
+    } @else {
+      <app-quantity-selector
+        [quantity]="quantity()"
+        (increment)="cartStore.increaseQuantity(donut().id)"
+        (decrement)="cartStore.decreaseQuantity(donut().id)"
+      />
+    }
+  </div>
 </article>

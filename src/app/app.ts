@@ -15,13 +15,7 @@ import { CartOverlay } from './cart/cart-overlay/cart-overlay';
 import { CartStore } from './cart/cart.store';
 
 @Component({
-  imports: [
-    RouterOutlet,
-    DonutListComponent,
-    Header,
-    CartButton,
-    CartOverlay,
-  ],
+  imports: [RouterOutlet, DonutListComponent, Header, CartButton, CartOverlay],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',

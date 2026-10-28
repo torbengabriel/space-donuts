@@ -1,5 +1,5 @@
 <main class="hero">
-  <app-header #headerElement/>
+  <app-header #headerElement />
 </main>
 
 @if (showStickyCart()) {
@@ -10,15 +10,10 @@
 
 <section class="donut-section" id="donuts">
   <h2>Find Your Favourite Donut</h2>
-  <p class="section-description">
-    Discover delicious creations from across the galaxy.
-  </p>
-  <app-donut-list/>
+  <p class="section-description">Discover delicious creations from across the galaxy.</p>
+  <app-donut-list />
 </section>
 
 <router-outlet />
 
-<app-cart-overlay
-  [open]="cartStore.isCartOpen()"
-  (closed)="cartStore.closeCart()"
-/>
+<app-cart-overlay [open]="cartStore.isCartOpen()" (closed)="cartStore.closeCart()" />

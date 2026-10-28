@@ -9,7 +9,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
   imports: [DonutItemComponent],
   templateUrl: './donut-list.component.html',
   styleUrl: './donut-list.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DonutListComponent {
   private readonly donutService = inject(DonutService);
