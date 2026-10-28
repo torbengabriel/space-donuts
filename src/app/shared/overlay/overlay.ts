@@ -1,4 +1,4 @@
-import { Component, effect, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, input, output } from '@angular/core';
 import { LucideX } from '@lucide/angular';
 
 @Component({
@@ -6,6 +6,7 @@ import { LucideX } from '@lucide/angular';
   imports: [LucideX],
   templateUrl: './overlay.html',
   styleUrl: './overlay.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Overlay {
   readonly open = input(false);
@@ -14,8 +15,10 @@ export class Overlay {
   constructor() {
     // Prevent background scrolling while the overlay is open,
     // while still allowing the overlay content to scroll.
-    effect(() => {
-      document.body.style.overflow = this.open() ? 'hidden' : '';
+    effect((onCleanup) => {
+      if (!this.open()) return;
+      document.body.style.overflow = 'hidden';
+      onCleanup(() => (document.body.style.overflow = ''));
     });
   }
 }
