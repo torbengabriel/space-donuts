@@ -45,10 +45,11 @@ Each article explores a specific topic, explains the decisions behind the implem
 
 **Articles:**
 
-1. Part 1 – From a Blank Project to a Cosmic Storefront
-   https://medium.com/@torbengab/building-space-donuts-with-angular-22-part-1-from-a-blank-project-to-a-cosmic-storefront-cdd51723b9fd
-2. Part 2 – From JSON Data to Reusable Components
-   https://medium.com/@torbengab/building-space-donuts-with-angular-22-part-2-from-json-data-to-reusable-components-16f42ca76084?sharedUserId=torbengab
+1. Part 1 – From a Blank Project to a Cosmic Storefront https://medium.com/@torbengab/building-space-donuts-with-angular-22-part-1-from-a-blank-project-to-a-cosmic-storefront-cdd51723b9fd
+2. Part 2 – From JSON Data to Reusable Components https://medium.com/@torbengab/building-space-donuts-with-angular-22-part-2-from-json-data-to-reusable-components-16f42ca76084?sharedUserId=torbengab
+3. Part 3 - Polishing the UI with SCSS and Lucide Icons https://medium.com/@torbengab/building-space-donuts-with-angular-22-part-3-polishing-the-ui-with-scss-and-lucide-icons-65296aba8b60?sharedUserId=torbengab
+4. Part 4 - Managing Shopping Cart State with NgRx SignalStore https://medium.com/@torbengab/building-space-donuts-with-angular-22-part-4-managing-shopping-cart-state-with-ngrx-signalstore-3df79e614582?sharedUserId=torbengab
+
 ## 🚀 Getting Started
 
 ### Prerequisites
