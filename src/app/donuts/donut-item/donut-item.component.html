@@ -21,7 +21,7 @@
           class="add-to-cart-button"
           type="button"
           [attr.aria-label]="'Add ' + donut().title + ' to cart '"
-          (click)="addToCart()"
+          (click)="cartStore.addDonut(this.donut())"
         >
           <svg lucideShoppingCart [size]="20"></svg>
         </button>

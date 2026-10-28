@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DonutItem } from './donut-item';
+import { DonutItemComponent } from './donut-item.component';
 
 describe('DonutItem', () => {
-  let component: DonutItem;
-  let fixture: ComponentFixture<DonutItem>;
+  let component: DonutItemComponent;
+  let fixture: ComponentFixture<DonutItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DonutItem],
+      imports: [DonutItemComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DonutItem);
+    fixture = TestBed.createComponent(DonutItemComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

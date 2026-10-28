@@ -1,0 +1,9 @@
+<section class="donut-section" id="donuts">
+  <ul class="donut-list">
+    @for (donut of donuts(); track donut.id) {
+      <li>
+        <app-donut-item [donut]="donut" />
+      </li>
+    }
+  </ul>
+</section>

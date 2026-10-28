@@ -8,7 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { DonutList } from './donuts/donut-list/donut-list';
+import { DonutListComponent } from './donuts/donut-list/donut-list.component';
 import { Header } from './header/header';
 import { CartButton } from './cart/cart-button/cart-button';
 import { CartOverlay } from './cart/cart-overlay/cart-overlay';
@@ -17,7 +17,7 @@ import { CartStore } from './cart/cart.store';
 @Component({
   imports: [
     RouterOutlet,
-    DonutList,
+    DonutListComponent,
     Header,
     CartButton,
     CartOverlay,

@@ -8,28 +8,16 @@ import { QuantitySelector } from '../../shared/quantity-selector/quantity-select
 
 @Component({
   selector: 'app-donut-item',
-  templateUrl: './donut-item.html',
-  styleUrl: './donut-item.scss',
+  templateUrl: './donut-item.component.html',
+  styleUrl: './donut-item.component.scss',
   imports: [CurrencyPipe, LucideShoppingCart, QuantitySelector],
 })
-export class DonutItem {
+export class DonutItemComponent {
   readonly donut = input.required<Donut>();
 
   readonly cartStore = inject(CartStore);
 
-  readonly quantity = computed(
+  protected readonly quantity = computed(
     () => this.cartStore.items().find((item) => item.donut.id === this.donut().id)?.quantity ?? 0,
   );
-
-  public addToCart(): void {
-    this.cartStore.addDonut(this.donut());
-  }
-
-  public onQuantityChange(quantity: number): void {
-    if (quantity > this.quantity()) {
-      this.cartStore.increaseQuantity(this.donut().id);
-    } else {
-      this.cartStore.decreaseQuantity(this.donut().id);
-    }
-  }
 }
