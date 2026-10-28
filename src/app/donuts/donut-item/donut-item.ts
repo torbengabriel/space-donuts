@@ -12,7 +12,7 @@ import { QuantitySelector } from '../../shared/quantity-selector/quantity-select
   styleUrl: './donut-item.scss',
   imports: [CurrencyPipe, LucideShoppingCart, QuantitySelector],
 })
-export class DonutItem {
+export class DonutItemComponent {
   readonly donut = input.required<Donut>();
 
   readonly cartStore = inject(CartStore);
