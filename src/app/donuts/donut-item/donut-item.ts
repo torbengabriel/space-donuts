@@ -8,11 +8,11 @@ import { QuantitySelector } from '../../shared/quantity-selector/quantity-select
 
 @Component({
   selector: 'app-donut-item',
-  templateUrl: './donut-item.component.html',
-  styleUrl: './donut-item.component.scss',
+  templateUrl: './donut-item.html',
+  styleUrl: './donut-item.scss',
   imports: [CurrencyPipe, LucideShoppingCart, QuantitySelector],
 })
-export class DonutItemComponent {
+export class DonutItem {
   readonly donut = input.required<Donut>();
 
   readonly cartStore = inject(CartStore);

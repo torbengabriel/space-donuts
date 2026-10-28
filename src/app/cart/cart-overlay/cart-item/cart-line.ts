@@ -5,11 +5,11 @@ import { CartItem } from '../../cart-item.model';
 
 @Component({
   imports: [CurrencyPipe, QuantitySelector],
-  selector: 'app-cart-item',
-  styleUrl: './cart-item.component.scss',
-  templateUrl: './cart-item.component.html',
+  selector: 'app-cart-line',
+  styleUrl: './cart-line.scss',
+  templateUrl: './cart-line.html',
 })
-export class CartItemComponent {
+export class CartLine {
   readonly item = input.required<CartItem>();
 
   protected readonly itemTotalPrice = computed(

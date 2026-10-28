@@ -8,7 +8,7 @@
     <ul class="cart-items" role="list">
       @for (item of cartStore.items(); track item.donut.id) {
         <li>
-          <app-cart-item
+          <app-cart-line
             [item]="item"
             (quantityIncreased)="cartStore.increaseQuantity(item.donut.id)"
             (quantityDecreased)="cartStore.decreaseQuantity(item.donut.id)"

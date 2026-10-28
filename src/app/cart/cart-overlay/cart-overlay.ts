@@ -2,10 +2,10 @@ import { Component, inject, input, output } from '@angular/core';
 import { Overlay } from '../../shared/overlay/overlay';
 import { CartStore } from '../cart.store';
 import { CurrencyPipe } from '@angular/common';
-import { CartItemComponent } from './cart-item/cart-item.component';
+import { CartLine } from './cart-item/cart-line';
 
 @Component({
-  imports: [Overlay, CurrencyPipe, CartItemComponent],
+  imports: [Overlay, CurrencyPipe, CartLine],
   selector: 'app-cart-overlay',
   styleUrl: './cart-overlay.scss',
   templateUrl: './cart-overlay.html',
