@@ -1,6 +1,6 @@
-<main class="hero">
+<div class="hero">
   <app-header #headerElement />
-</main>
+</div>
 
 @if (showStickyCart()) {
   <div class="sticky-cart">
@@ -8,12 +8,14 @@
   </div>
 }
 
-<section class="donut-section" id="donuts">
-  <h2>Find Your Favourite Donut</h2>
-  <p class="section-description">Discover delicious creations from across the galaxy.</p>
-  <app-donut-list />
-</section>
+<main>
+  <section class="donut-section" id="donuts">
+    <h2>Find Your Favourite Donut</h2>
+    <p class="section-description">Discover delicious creations from across the galaxy.</p>
+    <app-donut-list />
+  </section>
 
-<router-outlet />
+  <router-outlet />
+</main>
 
 <app-cart-overlay [open]="cartStore.isCartOpen()" (closed)="cartStore.closeCart()" />
