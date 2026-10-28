@@ -7,6 +7,7 @@
   @if (cartStore.isEmpty()) {
     <p>Your shopping cart is empty.</p>
   } @else {
+    <!-- role="list" is intentional: Safari/VoiceOver drops list semantics when list-style: none is set -->
     <ul class="cart-items" role="list">
       @for (item of cartStore.items(); track item.donut.id) {
         <li>
