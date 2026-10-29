@@ -16,10 +16,10 @@
       <button
         class="add-to-cart-button"
         type="button"
-        [attr.aria-label]="'Add ' + donut().title + ' to cart '"
-        (click)="cartStore.addDonut(this.donut())"
+        [attr.aria-label]="`Add ${donut().title} to cart`"
+        (click)="cartStore.addDonut(donut())"
       >
-        <svg lucideShoppingCart [size]="20"></svg>
+        <svg lucideShoppingCart [size]="20" aria-hidden="true"></svg>
       </button>
     } @else {
       <app-quantity-selector
