@@ -1,0 +1,15 @@
+<button
+  class="favorite-button"
+  [class.favorite-button--active]="active()"
+  type="button"
+  [attr.aria-label]="label()"
+  [attr.aria-pressed]="active()"
+  (click)="toggled.emit()"
+>
+  <svg
+    lucideHeart
+    [size]="30"
+    [attr.fill]="active() ? 'currentColor' : 'none'"
+    aria-hidden="true"
+  ></svg>
+</button>

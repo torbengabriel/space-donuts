@@ -1,0 +1,16 @@
+.add-to-cart-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+
+  background-color: var(--color-primary);
+  color: white;
+  cursor: pointer;
+}

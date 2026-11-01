@@ -2,8 +2,6 @@
   <svg lucideShoppingCart [size]="24"></svg>
 
   @if (cartStore.totalQuantity() > 0) {
-    <span class="cart-count">
-      {{ cartStore.totalQuantity() }}
-    </span>
+    <app-count-badge [count]="cartStore.totalQuantity()"/>
   }
 </button>

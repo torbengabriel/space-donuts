@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DonutItem } from './donut-item';
 import { CartStore } from '../../cart/cart.store';
-import { Donut } from '../models/donut.model';
+import { Donut } from '../donut.model';
 
 describe('DonutItem', () => {
   let fixture: ComponentFixture<DonutItem>;

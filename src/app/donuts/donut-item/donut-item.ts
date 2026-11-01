@@ -1,23 +1,23 @@
 import { Component, computed, inject, input } from '@angular/core';
 
-import { Donut } from '../models/donut.model';
+import { Donut } from '../donut.model';
 import { CurrencyPipe } from '@angular/common';
-import { LucideShoppingCart } from '@lucide/angular';
-import { CartStore } from '../../cart/cart.store';
-import { QuantitySelector } from '../../shared/quantity-selector/quantity-selector';
+import { AddToCart } from '../../cart/add-to-cart/add-to-cart';
+import { FavoriteToggle } from '../../favorites/favorite-toggle/favorite-toggle.component';
+import { FavoritesStore } from '../../favorites/favorites.store';
 
 @Component({
   selector: 'app-donut-item',
   templateUrl: './donut-item.html',
   styleUrl: './donut-item.scss',
-  imports: [CurrencyPipe, LucideShoppingCart, QuantitySelector],
+  imports: [CurrencyPipe, AddToCart, FavoriteToggle],
 })
 export class DonutItem {
   readonly donut = input.required<Donut>();
 
-  readonly cartStore = inject(CartStore);
+  protected readonly favoritesStore = inject(FavoritesStore);
 
-  protected readonly quantity = computed(
-    () => this.cartStore.items().find((item) => item.donut.id === this.donut().id)?.quantity ?? 0,
+  protected readonly isFavorite = computed(() =>
+    this.favoritesStore.donutIds().includes(this.donut().id),
   );
 }

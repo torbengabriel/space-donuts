@@ -1,7 +1,7 @@
 import { computed } from '@angular/core';
 import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals';
 
-import { Donut } from '../donuts/models/donut.model';
+import { Donut } from '../donuts/donut.model';
 import { CartItem } from './cart-item.model';
 
 interface CartState {

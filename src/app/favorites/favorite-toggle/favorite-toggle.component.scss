@@ -1,0 +1,21 @@
+.favorite-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 0;
+
+  color: #fff; // Umriss weiß (stroke = currentColor)
+
+  svg {
+    fill: none;
+    filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.5));
+  }
+
+  &--active {
+    color: #e0245e; // Umriss rot
+
+    svg {
+      fill: currentColor; // Füllung rot
+    }
+  }
+}

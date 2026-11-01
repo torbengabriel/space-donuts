@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Donut } from '../models/donut.model';
+import { Donut } from '../donut.model';
 
 @Injectable({
   providedIn: 'root',

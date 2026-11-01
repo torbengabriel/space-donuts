@@ -1,4 +1,11 @@
 <article class="donut-card">
+  <app-favorite-toggle
+    class="donut-card-favorite"
+    [active]="isFavorite()"
+    [label]="`Favorite ${donut().title}`"
+    (toggled)="favoritesStore.toggle(donut().id)"
+  />
+
   <img class="donut-image" [src]="donut().image" [alt]="donut().title" />
 
   <div class="donut-card-content">
@@ -12,21 +19,6 @@
       {{ donut().price | currency }}
     </span>
 
-    @if (quantity() === 0) {
-      <button
-        class="add-to-cart-button"
-        type="button"
-        [attr.aria-label]="`Add ${donut().title} to cart`"
-        (click)="cartStore.addDonut(donut())"
-      >
-        <svg lucideShoppingCart [size]="20" aria-hidden="true"></svg>
-      </button>
-    } @else {
-      <app-quantity-selector
-        [quantity]="quantity()"
-        (increment)="cartStore.increaseQuantity(donut().id)"
-        (decrement)="cartStore.decreaseQuantity(donut().id)"
-      />
-    }
+    <app-add-to-cart [donut]="donut()"/>
   </div>
 </article>

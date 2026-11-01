@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
-import { Donut } from '../models/donut.model';
+import { Donut } from '../donut.model';
 import { DonutService } from '../services/donut';
 import { DonutList } from './donut-list';
 
@@ -17,6 +17,7 @@ describe('DonutList', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [DonutList],
+      providers: [{ provide: DonutService, useValue: { getDonuts: () => of(donuts) } }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DonutList);

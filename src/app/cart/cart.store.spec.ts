@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Donut } from '../donuts/models/donut.model';
+import { Donut } from '../donuts/donut.model';
 import { CartStore } from './cart.store';
 
 const glazed: Donut = { id: 1, title: 'Glazed', price: 2.5 } as Donut;

@@ -2,7 +2,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { Donut } from '../models/donut.model';
+import { Donut } from '../donut.model';
 import { DonutService } from './donut';
 
 describe('DonutService', () => {

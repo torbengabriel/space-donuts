@@ -2,7 +2,7 @@ import { Component, inject, input, output } from '@angular/core';
 import { Overlay } from '../../shared/overlay/overlay';
 import { CartStore } from '../cart.store';
 import { CurrencyPipe } from '@angular/common';
-import { CartLine } from './cart-item/cart-line';
+import { CartLine } from './cart-line/cart-line';
 
 @Component({
   imports: [Overlay, CurrencyPipe, CartLine],

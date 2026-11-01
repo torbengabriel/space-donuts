@@ -1,4 +1,4 @@
-import { Donut } from '../donuts/models/donut.model';
+import { Donut } from '../donuts/donut.model';
 
 export interface CartItem {
   donut: Donut;

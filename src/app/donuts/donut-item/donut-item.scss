@@ -4,6 +4,7 @@
   height: 100%;
   box-sizing: border-box;
   overflow: hidden;
+  position: relative;
 
   border: 1px solid #f0e4ed;
   border-radius: 1rem;
@@ -18,6 +19,13 @@
     border-color: #e8c6df;
     box-shadow: 0 4px 14px rgb(50 20 40 / 8%);
   }
+}
+
+.donut-card-favorite {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 1;
 }
 
 .donut-image {
@@ -53,21 +61,4 @@
 
 .donut-price {
   font-weight: 700;
-}
-
-.add-to-cart-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-
-  width: 42px;
-  height: 42px;
-  padding: 0;
-  border: none;
-  border-radius: 50%;
-
-  background-color: var(--color-primary);
-  color: white;
-  cursor: pointer;
 }
