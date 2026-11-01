@@ -10,7 +10,6 @@ describe('CartStore', () => {
   let store: InstanceType<typeof CartStore>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
     store = TestBed.inject(CartStore);
   });
 
