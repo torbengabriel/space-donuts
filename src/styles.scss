@@ -1,3 +1,24 @@
 button {
   cursor: pointer;
 }
+
+.icon-button {
+  position: relative;
+  display: inline-flex;
+  padding: 0.5rem;
+
+  background: none;
+  border: none;
+  color: #fff;              // (stroke = currentColor)
+  cursor: pointer;
+  line-height: 0;
+
+  svg {
+    fill: none;             // only Outline
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+}

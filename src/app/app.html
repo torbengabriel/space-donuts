@@ -18,4 +18,6 @@
   <router-outlet />
 </main>
 
+<app-search-overlay />
+
 <app-cart-overlay [open]="cartStore.isCartOpen()" (closed)="cartStore.closeCart()" />

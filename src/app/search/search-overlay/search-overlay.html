@@ -1,0 +1,16 @@
+<app-overlay [open]="searchStore.isOpen()" (closed)="searchStore.closeSearch()">
+  <h2>Search</h2>
+
+  @if (searchStore.isOpen()) {
+    <input
+      #field
+      class="search-input"
+      type="search"
+      placeholder="Search donuts"
+      aria-label="Search donuts"
+      [value]="searchStore.query()"
+      (input)="searchStore.setQuery($any($event.target).value)"
+      (keydown.enter)="searchStore.closeSearch()"
+    />
+  }
+</app-overlay>
