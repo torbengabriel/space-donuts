@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
-import { DonutService } from '../services/donut';
 import { DonutItem } from '../donut-item/donut-item';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { DonutsStore } from '../donuts.store';
 
 @Component({
   selector: 'app-donut-list',
@@ -12,7 +11,5 @@ import { toSignal } from '@angular/core/rxjs-interop';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DonutList {
-  private readonly donutService = inject(DonutService);
-
-  protected readonly donuts = toSignal(this.donutService.getDonuts(), { initialValue: [] });
+  protected readonly donutsStore = inject(DonutsStore);
 }

@@ -1,9 +1,15 @@
 <section class="donut-section" id="donuts">
-  <ul class="donut-list">
-    @for (donut of donuts(); track donut.id) {
-      <li>
-        <app-donut-item [donut]="donut" />
-      </li>
-    }
-  </ul>
+  @if (donutsStore.isLoading()) {
+    <output>Loading donuts…</output>
+  } @else if (donutsStore.hasError()) {
+    <p role="alert">Donuts could not be loaded. Please try again later.</p>
+  } @else {
+    <ul class="donut-list">
+      @for (donut of donutsStore.donuts(); track donut.id) {
+        <li>
+          <app-donut-item [donut]="donut" />
+        </li>
+      }
+    </ul>
+  }
 </section>
