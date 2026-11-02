@@ -1,4 +1,4 @@
-<app-overlay [open]="open()" (closed)="closed.emit()">
+<app-overlay [open]="cartStore.isCartOpen()" (closed)="cartStore.closeCart()">
   <h2>Shopping Cart</h2>
 
   @if (cartStore.isEmpty()) {

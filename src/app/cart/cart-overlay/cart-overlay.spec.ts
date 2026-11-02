@@ -22,8 +22,9 @@ describe('CartOverlay', () => {
     await TestBed.configureTestingModule({ imports: [CartOverlay] }).compileComponents();
 
     store = TestBed.inject(CartStore);
+    store.openCart();
+
     fixture = TestBed.createComponent(CartOverlay);
-    fixture.componentRef.setInput('open', true);
     await fixture.whenStable();
     element = fixture.nativeElement;
   });
@@ -62,7 +63,7 @@ describe('CartOverlay', () => {
   });
 
   it('renders nothing when closed', async () => {
-    fixture.componentRef.setInput('open', false);
+    store.openCart();
     await fixture.whenStable();
 
     expect(element.querySelector('h2')).toBeNull();

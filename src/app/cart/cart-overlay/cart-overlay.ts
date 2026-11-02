@@ -1,4 +1,4 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Overlay } from '../../shared/overlay/overlay';
 import { CartStore } from '../cart.store';
 import { CurrencyPipe } from '@angular/common';
@@ -11,8 +11,5 @@ import { CartLine } from './cart-line/cart-line';
   templateUrl: './cart-overlay.html',
 })
 export class CartOverlay {
-  readonly cartStore = inject(CartStore);
-
-  readonly open = input.required<boolean>();
-  readonly closed = output<void>();
+  protected readonly cartStore = inject(CartStore);
 }
