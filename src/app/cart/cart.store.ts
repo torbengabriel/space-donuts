@@ -6,7 +6,7 @@ import { CartItem } from './cart-item.model';
 
 interface CartState {
   items: CartItem[];
-  isCartOpen: boolean;
+  isOpen: boolean;
 }
 
 export const CartStore = signalStore(
@@ -14,7 +14,7 @@ export const CartStore = signalStore(
 
   withState<CartState>({
     items: [],
-    isCartOpen: false,
+    isOpen: false,
   }),
 
   withComputed(({ items }) => ({
@@ -68,11 +68,11 @@ export const CartStore = signalStore(
     },
 
     openCart(): void {
-      patchState(store, { isCartOpen: true });
+      patchState(store, { isOpen: true });
     },
 
     closeCart(): void {
-      patchState(store, { isCartOpen: false });
+      patchState(store, { isOpen: false });
     },
   })),
 );
