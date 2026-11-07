@@ -1,0 +1,16 @@
+<button
+  class="icon-button"
+  type="button"
+  [attr.aria-label]="`Favorites, ${favoritesStore.count()} donuts`"
+  (click)="favoritesStore.openFavorites()"
+>
+  <svg
+    lucideHeart
+    [size]="30"
+    aria-hidden="true"
+  ></svg>
+
+  @if (favoritesStore.count() > 0) {
+    <app-count-badge [count]="favoritesStore.count()" />
+  }
+</button>

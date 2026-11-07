@@ -1,0 +1,16 @@
+<app-overlay [open]="favoritesStore.isOpen()" (closed)="favoritesStore.closeFavorites()">
+  <h2>Your Favorites</h2>
+
+  @if (favoritesStore.isEmpty()) {
+    <p>You have no favorites yet.</p>
+  } @else {
+    <!-- role="list" is intentional: Safari/VoiceOver drops list semantics when list-style: none is set -->
+    <ul class="favorite-items" role="list">
+      @for (donut of favoriteDonuts(); track donut.id) {
+        <li>
+          <app-donut-item [donut]="donut" />
+        </li>
+      }
+    </ul>
+  }
+</app-overlay>
