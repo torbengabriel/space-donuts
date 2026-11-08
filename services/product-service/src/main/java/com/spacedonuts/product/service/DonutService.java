@@ -7,12 +7,17 @@ import com.spacedonuts.product.exception.DonutNotFoundException;
 import com.spacedonuts.product.mapper.DonutMapper;
 import com.spacedonuts.product.repository.DonutRepository;
 import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class DonutService {
+
+  private static final Logger log =
+    LoggerFactory.getLogger(DonutService.class);
 
   private final DonutRepository donutRepository;
   private final DonutMapper donutMapper;
@@ -23,13 +28,20 @@ public class DonutService {
   }
 
   public List<DonutResponse> findAll() {
-    return donutRepository.findAll()
-      .stream()
+    log.debug("Loading all donuts");
+
+    List<Donut> donuts = donutRepository.findAll();
+
+    log.debug("Loaded {} donuts", donuts.size());
+
+    return donuts.stream()
       .map(donutMapper::toResponse)
       .toList();
   }
 
   public DonutResponse findById(Long id) {
+    log.debug("Loading donut with id {}", id);
+
     Donut donut = donutRepository.findById(id)
       .orElseThrow(() -> new DonutNotFoundException(id));
 
@@ -38,8 +50,9 @@ public class DonutService {
 
   public DonutResponse create(DonutCreateRequest request) {
     Donut donut = donutMapper.toEntity(request);
-
     Donut savedDonut = donutRepository.save(donut);
+
+    log.info("Created donut with ID {}", savedDonut.getId());
 
     return donutMapper.toResponse(savedDonut);
   }
@@ -55,6 +68,8 @@ public class DonutService {
     donut.setImageUrl(request.imageUrl());
     donut.setVegan(request.vegan());
 
+    log.debug("Updating donut with ID {}", donut.getId());
+
     return donutMapper.toResponse(donut);
   }
 
@@ -64,5 +79,7 @@ public class DonutService {
       .orElseThrow(() -> new DonutNotFoundException(id));
 
     donutRepository.delete(donut);
+
+    log.info("Donut with ID {} was deleted", donut.getId());
   }
 }
