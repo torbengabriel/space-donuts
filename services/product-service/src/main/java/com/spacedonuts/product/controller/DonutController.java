@@ -40,4 +40,19 @@ public class DonutController {
 
     return ResponseEntity.created(location).body(createdDonut);
   }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<DonutResponse> update(
+    @PathVariable Long id,
+    @Valid @RequestBody DonutCreateRequest request
+  ) {
+    DonutResponse updatedDonut = donutService.update(id, request);
+    return ResponseEntity.ok(updatedDonut);
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> delete(@PathVariable Long id) {
+    donutService.delete(id);
+    return ResponseEntity.noContent().build();
+  }
 }

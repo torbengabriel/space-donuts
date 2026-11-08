@@ -6,6 +6,7 @@ import com.spacedonuts.product.entity.Donut;
 import com.spacedonuts.product.exception.DonutNotFoundException;
 import com.spacedonuts.product.mapper.DonutMapper;
 import com.spacedonuts.product.repository.DonutRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,5 +42,27 @@ public class DonutService {
     Donut savedDonut = donutRepository.save(donut);
 
     return donutMapper.toResponse(savedDonut);
+  }
+
+  @Transactional
+  public DonutResponse update(Long id, DonutCreateRequest request) {
+    Donut donut = donutRepository.findById(id)
+      .orElseThrow(() -> new DonutNotFoundException(id));
+
+    donut.setName(request.name());
+    donut.setDescription(request.description());
+    donut.setPrice(request.price());
+    donut.setImageUrl(request.imageUrl());
+    donut.setVegan(request.vegan());
+
+    return donutMapper.toResponse(donut);
+  }
+
+  @Transactional
+  public void delete(Long id) {
+    Donut donut = donutRepository.findById(id)
+      .orElseThrow(() -> new DonutNotFoundException(id));
+
+    donutRepository.delete(donut);
   }
 }
