@@ -101,6 +101,11 @@
       <artifactId>testcontainers-junit-jupiter</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>de.codecentric</groupId>
+      <artifactId>spring-boot-admin-starter-client</artifactId>
+      <version>4.1.2</version>
+    </dependency>
 	</dependencies>
 
 	<build>
