@@ -1,12 +1,14 @@
 package com.spacedonuts.product.service;
 
+import com.spacedonuts.product.dto.DonutCreateRequest;
 import com.spacedonuts.product.dto.DonutResponse;
+import com.spacedonuts.product.entity.Donut;
+import com.spacedonuts.product.exception.DonutNotFoundException;
 import com.spacedonuts.product.mapper.DonutMapper;
 import com.spacedonuts.product.repository.DonutRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class DonutService {
@@ -26,8 +28,18 @@ public class DonutService {
       .toList();
   }
 
-  public Optional<DonutResponse> findById(Long id) {
-    return donutRepository.findById(id)
-      .map(donutMapper::toResponse);
+  public DonutResponse findById(Long id) {
+    Donut donut = donutRepository.findById(id)
+      .orElseThrow(() -> new DonutNotFoundException(id));
+
+    return donutMapper.toResponse(donut);
+  }
+
+  public DonutResponse create(DonutCreateRequest request) {
+    Donut donut = donutMapper.toEntity(request);
+
+    Donut savedDonut = donutRepository.save(donut);
+
+    return donutMapper.toResponse(savedDonut);
   }
 }

@@ -39,6 +39,20 @@ public class Donut {
   protected Donut() {
   }
 
+  public Donut(
+    String name,
+    String description,
+    BigDecimal price,
+    String imageUrl,
+    boolean vegan
+  ) {
+    this.name = name;
+    this.description = description;
+    this.price = price;
+    this.imageUrl = imageUrl;
+    this.vegan = vegan;
+  }
+
   public Long getId() {
     return id;
   }
