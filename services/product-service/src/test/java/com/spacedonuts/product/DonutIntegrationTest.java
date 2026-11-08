@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-class DonutIntegrationTest {
+class DonutIntegrationTest extends AbstractIntegrationTest {
 
   @Autowired
   private MockMvc mockMvc;
