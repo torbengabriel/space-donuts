@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Galactic Classic Box",
+    "description": "Six classic donuts for your first journey through the galaxy.",
+    "price": 12.9,
+    "imageUrl": "/images/boxes/galactic-classic-box.png",
+    "category": "DONUT_BOX",
+    "vegan": false
+  },
+  {
+    "name": "Nebula Deluxe Box",
+    "description": "Six premium donuts with cosmic glazes and stellar toppings.",
+    "price": 16.9,
+    "imageUrl": "/images/boxes/nebula-deluxe-box.png",
+    "category": "DONUT_BOX",
+    "vegan": false
+  },
+  {
+    "name": "Alien Explorer Box",
+    "description": "Six out-of-this-world donuts with alien-inspired decorations.",
+    "price": 15.9,
+    "imageUrl": "/images/boxes/alien-explorer-box.png",
+    "category": "DONUT_BOX",
+    "vegan": false
+  },
+  {
+    "name": "Vegan Cosmic Box",
+    "description": "Six delicious plant-based donuts from another galaxy.",
+    "price": 16.9,
+    "imageUrl": "/images/boxes/vegan-cosmic-box.png",
+    "category": "DONUT_BOX",
+    "vegan": true
+  },
+  {
+    "name": "Black Hole Power Box",
+    "description": "Six rich chocolate donuts with brownie, caramel and intense fillings.",
+    "price": 17.9,
+    "imageUrl": "/images/boxes/black-hole-power-box.png",
+    "category": "DONUT_BOX",
+    "vegan": false
+  },
+  {
+    "name": "Supernova Party Box",
+    "description": "Twelve colorful donuts to make every celebration explode.",
+    "price": 29.9,
+    "imageUrl": "/images/boxes/supernova-party-box.png",
+    "category": "DONUT_BOX",
+    "vegan": false
+  }
+]

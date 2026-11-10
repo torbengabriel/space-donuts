@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Galaxy Cheesecake",
+    "description": "Creamy cheesecake with a cosmic berry swirl.",
+    "price": 5.9,
+    "imageUrl": "/images/bakery/galaxy-cheesecake.png",
+    "category": "BAKERY",
+    "vegan": false,
+    "available": true
+  },
+  {
+    "name": "Lava Cake",
+    "description": "Warm chocolate cake with a rich, molten chocolate core.",
+    "price": 5.5,
+    "imageUrl": "/images/bakery/lava-cake.png",
+    "category": "BAKERY",
+    "vegan": false,
+    "available": true
+  },
+  {
+    "name": "Rocket Cupcake",
+    "description": "Fluffy vanilla cupcake topped with colorful galaxy frosting.",
+    "price": 4.2,
+    "imageUrl": "/images/bakery/rocket-cupcake.png",
+    "category": "BAKERY",
+    "vegan": false,
+    "available": true
+  },
+  {
+    "name": "Planet Cupcake",
+    "description": "Rich chocolate cupcake with a crunchy cosmic topping.",
+    "price": 4.2,
+    "imageUrl": "/images/bakery/planet-cupcake.png",
+    "category": "BAKERY",
+    "vegan": false,
+    "available": true
+  },
+  {
+    "name": "Cosmic Cookie",
+    "description": "Soft cookie with chocolate chunks and colorful planet candies.",
+    "price": 3.9,
+    "imageUrl": "/images/bakery/cosmic-cookie.png",
+    "category": "BAKERY",
+    "vegan": false,
+    "available": true
+  },
+  {
+    "name": "Dubai Space Cookie",
+    "description": "Pistachio cookie with chocolate and crispy kataifi.",
+    "price": 4.5,
+    "imageUrl": "/images/bakery/dubai-space-cookie.png",
+    "category": "BAKERY",
+    "vegan": false,
+    "available": true
+  },
+  {
+    "name": "Meteor Brownie",
+    "description": "Fudgy chocolate brownie with chocolate chunks.",
+    "price": 4.5,
+    "imageUrl": "/images/bakery/meteor-brownie.png",
+    "category": "BAKERY",
+    "vegan": false,
+    "available": true
+  },
+  {
+    "name": "Astro Carrot Cake",
+    "description": "Moist carrot cake layered with creamy frosting.",
+    "price": 5.5,
+    "imageUrl": "/images/bakery/astro-carrot-cake.png",
+    "category": "BAKERY",
+    "vegan": false,
+    "available": true
+  },
+  {
+    "name": "Lunar Lemon Tart",
+    "description": "Refreshing lemon tart with a light, zesty cream.",
+    "price": 4.9,
+    "imageUrl": "/images/bakery/lunar-lemon-tart.png",
+    "category": "BAKERY",
+    "vegan": false,
+    "available": true
+  },
+  {
+    "name": "Comet Apple Crumble",
+    "description": "Classic apple crumble with a warm cosmic twist.",
+    "price": 4.9,
+    "imageUrl": "/images/bakery/comet-apple-crumble.png",
+    "category": "BAKERY",
+    "vegan": false,
+    "available": true
+  }
+]

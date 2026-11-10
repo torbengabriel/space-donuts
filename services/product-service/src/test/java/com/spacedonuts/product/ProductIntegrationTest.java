@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-class DonutIntegrationTest extends AbstractIntegrationTest {
+class ProductIntegrationTest extends AbstractIntegrationTest {
 
   @Autowired
   private MockMvc mockMvc;
@@ -27,7 +27,7 @@ class DonutIntegrationTest extends AbstractIntegrationTest {
   void shouldGetDonutById() throws Exception {
     long donutId = createTestDonut();
 
-    mockMvc.perform(get("/api/donuts/" + donutId))
+    mockMvc.perform(get("/api/products/" + donutId))
       .andExpect(status().isOk())
       .andExpect(jsonPath("$.id").value(donutId))
       .andExpect(jsonPath("$.name").value("Integration Test Donut"))
@@ -42,12 +42,12 @@ class DonutIntegrationTest extends AbstractIntegrationTest {
                     "name": "Test Donut",
                     "description": "Integration Test Donut",
                     "price": 4.50,
-                    "imageUrl": "/images/donuts/test-donut.png",
+                    "imageUrl": "/images/products/test-product.png",
                     "vegan": false
                 }
                 """;
 
-    mockMvc.perform(post("/api/donuts")
+    mockMvc.perform(post("/api/products")
         .contentType(MediaType.APPLICATION_JSON)
         .content(request))
       .andExpect(status().isCreated())
@@ -66,12 +66,12 @@ class DonutIntegrationTest extends AbstractIntegrationTest {
                 "name": "Updated Donut",
                 "description": "Updated description",
                 "price": 5.50,
-                "imageUrl": "/images/donuts/updated.png",
+                "imageUrl": "/images/products/updated.png",
                 "vegan": true
             }
             """;
 
-    mockMvc.perform(put("/api/donuts/" + donutId)
+    mockMvc.perform(put("/api/products/" + donutId)
         .contentType(MediaType.APPLICATION_JSON)
         .content(request))
       .andExpect(status().isOk())
@@ -85,10 +85,10 @@ class DonutIntegrationTest extends AbstractIntegrationTest {
   void shouldDeleteDonut() throws Exception {
     long donutId = createTestDonut();
 
-    mockMvc.perform(delete("/api/donuts/" + donutId))
+    mockMvc.perform(delete("/api/products/" + donutId))
       .andExpect(status().isNoContent());
 
-    mockMvc.perform(get("/api/donuts/" + donutId))
+    mockMvc.perform(get("/api/products/" + donutId))
       .andExpect(status().isNotFound());
   }
 
@@ -96,14 +96,14 @@ class DonutIntegrationTest extends AbstractIntegrationTest {
   void shouldRejectDonutWithoutName() throws Exception {
     String request = """
             {
-                "description": "A donut without a name",
+                "description": "A product without a name",
                 "price": 4.50,
-                "imageUrl": "/images/donuts/test.png",
+                "imageUrl": "/images/products/test.png",
                 "vegan": false
             }
             """;
 
-    mockMvc.perform(post("/api/donuts")
+    mockMvc.perform(post("/api/products")
         .contentType(MediaType.APPLICATION_JSON)
         .content(request))
       .andExpect(status().isBadRequest());
@@ -116,12 +116,12 @@ class DonutIntegrationTest extends AbstractIntegrationTest {
                 "name": "Invalid Donut",
                 "description": "Negative price",
                 "price": -4.50,
-                "imageUrl": "/images/donuts/test.png",
+                "imageUrl": "/images/products/test.png",
                 "vegan": false
             }
             """;
 
-    mockMvc.perform(post("/api/donuts")
+    mockMvc.perform(post("/api/products")
         .contentType(MediaType.APPLICATION_JSON)
         .content(request))
       .andExpect(status().isBadRequest());
@@ -129,9 +129,9 @@ class DonutIntegrationTest extends AbstractIntegrationTest {
 
   @Test
   void shouldReturn404WhenDonutDoesNotExist() throws Exception {
-    mockMvc.perform(get("/api/donuts/999"))
+    mockMvc.perform(get("/api/products/999"))
       .andExpect(status().isNotFound())
-      .andExpect(jsonPath("$.title").value("Donut not found"));
+      .andExpect(jsonPath("$.title").value("Product not found"));
   }
 
   private long createTestDonut() throws Exception {
@@ -140,12 +140,12 @@ class DonutIntegrationTest extends AbstractIntegrationTest {
                 "name": "Integration Test Donut",
                 "description": "Created for testing",
                 "price": 4.50,
-                "imageUrl": "/images/donuts/test.png",
+                "imageUrl": "/images/products/test.png",
                 "vegan": false
             }
             """;
 
-    String response = mockMvc.perform(post("/api/donuts")
+    String response = mockMvc.perform(post("/api/products")
         .contentType(MediaType.APPLICATION_JSON)
         .content(request))
       .andExpect(status().isCreated())

@@ -6,8 +6,8 @@
       #field
       class="search-input"
       type="search"
-      placeholder="Search donuts"
-      aria-label="Search donuts"
+      placeholder="Search products"
+      aria-label="Search products"
       [value]="searchStore.query()"
       (input)="searchStore.setQuery($any($event.target).value)"
       (keydown.enter)="searchStore.closeSearch()"

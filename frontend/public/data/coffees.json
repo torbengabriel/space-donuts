@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Vulcanic Coffee",
+    "description": "Spicy mocha with dark chocolate, chili and a fiery topping.",
+    "price": 4.9,
+    "imageUrl": "/images/coffee/vulcanic-coffee.png",
+    "category": "COFFEE",
+    "vegan": false,
+    "available": true
+  },
+  {
+    "name": "Dubai Space Coffee",
+    "description": "Creamy coffee with pistachio cream, chocolate and crunchy kataifi.",
+    "price": 5.5,
+    "imageUrl": "/images/coffee/dubai-space-coffee.png",
+    "category": "COFFEE",
+    "vegan": false,
+    "available": true
+  },
+  {
+    "name": "Nebula Berry Latte",
+    "description": "Iced latte with wild berries, vanilla and a cosmic twist.",
+    "price": 4.9,
+    "imageUrl": "/images/coffee/nebula-berry-latte.png",
+    "category": "COFFEE",
+    "vegan": false,
+    "available": true
+  },
+  {
+    "name": "Galaxy Matcha Coffee",
+    "description": "Matcha meets espresso: smooth, creamy and out of this world.",
+    "price": 4.9,
+    "imageUrl": "/images/coffee/galaxy-matcha-coffee.png",
+    "category": "COFFEE",
+    "vegan": false,
+    "available": true
+  },
+  {
+    "name": "Caramel Comet Frappe",
+    "description": "Iced coffee with salted caramel, creamy foam and crunchy galaxy bits.",
+    "price": 5.2,
+    "imageUrl": "/images/coffee/caramel-comet-frappe.png",
+    "category": "COFFEE",
+    "vegan": false,
+    "available": true
+  },
+  {
+    "name": "Zero Gravity Cold Brew",
+    "description": "Refreshing cold brew with blue citrus, lime and a cosmic energy boost.",
+    "price": 4.7,
+    "imageUrl": "/images/coffee/zero-gravity-cold-brew.png",
+    "category": "COFFEE",
+    "vegan": false,
+    "available": true
+  }
+]

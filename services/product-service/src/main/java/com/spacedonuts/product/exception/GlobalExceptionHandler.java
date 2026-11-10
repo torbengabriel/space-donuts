@@ -14,18 +14,18 @@ public class GlobalExceptionHandler {
   private static final Logger log =
     LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-  @ExceptionHandler(DonutNotFoundException.class)
+  @ExceptionHandler(ProductNotFoundException.class)
   public ProblemDetail handleDonutNotFound(
-    DonutNotFoundException exception) {
+    ProductNotFoundException exception) {
 
-    log.warn("Donut not found: {}", exception.getMessage());
+    log.warn("Product not found: {}", exception.getMessage());
 
     ProblemDetail problem = ProblemDetail.forStatusAndDetail(
       HttpStatus.NOT_FOUND,
       exception.getMessage()
     );
 
-    problem.setTitle("Donut not found");
+    problem.setTitle("Product not found");
 
     return problem;
   }

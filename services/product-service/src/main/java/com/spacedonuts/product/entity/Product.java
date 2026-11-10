@@ -7,8 +7,8 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "donuts")
-public class Donut {
+@Table(name = "products")
+public class Product {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +26,10 @@ public class Donut {
   @Column(name = "image_url", length = 500)
   private String imageUrl;
 
+  @Enumerated(EnumType.STRING)
+  @Column(nullable = false, length = 250)
+  private ProductCategory category;
+
   @Column(nullable = false)
   private boolean vegan = false;
 
@@ -36,20 +40,22 @@ public class Donut {
   @Column(name = "created_at", nullable = false, updatable = false)
   private LocalDateTime createdAt;
 
-  protected Donut() {
+  protected Product() {
   }
 
-  public Donut(
+  public Product(
     String name,
     String description,
     BigDecimal price,
     String imageUrl,
+    ProductCategory category,
     boolean vegan
   ) {
     this.name = name;
     this.description = description;
     this.price = price;
     this.imageUrl = imageUrl;
+    this.category = category;
     this.vegan = vegan;
   }
 
@@ -71,6 +77,10 @@ public class Donut {
 
   public String getImageUrl() {
     return imageUrl;
+  }
+
+  public ProductCategory getCategory() {
+    return category;
   }
 
   public boolean isVegan() {
@@ -103,6 +113,10 @@ public class Donut {
 
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
+  }
+
+  public void setCategory(ProductCategory category) {
+    this.category = category;
   }
 
   public void setVegan(boolean vegan) {

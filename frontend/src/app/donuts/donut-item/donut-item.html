@@ -1,24 +1,24 @@
-<article class="donut-card">
+<article class="product-card">
   <app-favorite-toggle
-    class="donut-card-favorite"
+    class="product-card-favorite"
     [active]="isFavorite()"
-    [label]="`Favorite ${donut().title}`"
-    (toggled)="favoritesStore.toggle(donut().id)"
+    [label]="`Favorite ${product().title}`"
+    (toggled)="favoritesStore.toggle(product().id)"
   />
 
-  <img class="donut-image" [src]="donut().image" [alt]="donut().title" />
+  <img class="product-image" [src]="product().image" [alt]="product().title" />
 
-  <div class="donut-card-content">
-    <h3>{{ donut().title }}</h3>
+  <div class="product-card-content">
+    <h3>{{ product().title }}</h3>
 
-    <p>{{ donut().description }}</p>
+    <p>{{ product().description }}</p>
   </div>
 
-  <div class="donut-card-footer">
-    <span class="donut-price">
-      {{ donut().price | currency }}
+  <div class="product-card-footer">
+    <span class="product-price">
+      {{ product().price | currency }}
     </span>
 
-    <app-add-to-cart [donut]="donut()"/>
+    <app-add-to-cart [product]="product()"/>
   </div>
 </article>

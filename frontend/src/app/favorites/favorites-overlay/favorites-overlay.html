@@ -6,9 +6,9 @@
   } @else {
     <!-- role="list" is intentional: Safari/VoiceOver drops list semantics when list-style: none is set -->
     <ul class="favorite-items" role="list">
-      @for (donut of favoriteDonuts(); track donut.id) {
+      @for (product of favoriteDonuts(); track product.id) {
         <li>
-          <app-donut-item [donut]="donut" />
+          <app-product-item [product]="product" />
         </li>
       }
     </ul>

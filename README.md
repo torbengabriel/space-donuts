@@ -1,12 +1,12 @@
 # Space Donuts 🍩🚀
 
-**A fictional galactic donut shop built with Angular 22.**
+**A fictional galactic product shop built with Angular 22.**
 
-Space Donuts is a learning project in which I build a fictional online donut shop set in space. The project serves as a practical way to explore modern Angular features, experiment with different approaches, and deepen my understanding of Angular through hands-on development.
+Space Donuts is a learning project in which I build a fictional online product shop set in space. The project serves as a practical way to explore modern Angular features, experiment with different approaches, and deepen my understanding of Angular through hands-on development.
 
 Screen Design
 
-<img src="docs/images/space-donuts-screendesign.png"
+<img src="docs/images/space-products-screendesign.png"
 alt="Space Donuts storefront design"
 width="800">
 
@@ -46,22 +46,22 @@ Each article explores a specific topic, explains the decisions behind the implem
 **Articles:**
 
 1. Part 1 – From a Blank Project to a Cosmic Storefront  
-   [Read on Medium](https://medium.com/@torbengab/building-space-donuts-with-angular-22-part-1-from-a-blank-project-to-a-cosmic-storefront-cdd51723b9fd)
+   [Read on Medium](https://medium.com/@torbengab/building-space-products-with-angular-22-part-1-from-a-blank-project-to-a-cosmic-storefront-cdd51723b9fd)
 
 2. Part 2 – From JSON Data to Reusable Components  
-   [Read on Medium](https://medium.com/@torbengab/building-space-donuts-with-angular-22-part-2-from-json-data-to-reusable-components-16f42ca76084?sharedUserId=torbengab)
+   [Read on Medium](https://medium.com/@torbengab/building-space-products-with-angular-22-part-2-from-json-data-to-reusable-components-16f42ca76084?sharedUserId=torbengab)
 
 3. Part 3 – Polishing the UI with SCSS and Lucide Icons  
-   [Read on Medium](https://medium.com/@torbengab/building-space-donuts-with-angular-22-part-3-polishing-the-ui-with-scss-and-lucide-icons-65296aba8b60?sharedUserId=torbengab)
+   [Read on Medium](https://medium.com/@torbengab/building-space-products-with-angular-22-part-3-polishing-the-ui-with-scss-and-lucide-icons-65296aba8b60?sharedUserId=torbengab)
 
 4. Part 4 – Managing Shopping Cart State with NgRx SignalStore  
-   [Read on Medium](https://medium.com/@torbengab/building-space-donuts-with-angular-22-part-4-managing-shopping-cart-state-with-ngrx-signalstore-3df79e614582?sharedUserId=torbengab)
+   [Read on Medium](https://medium.com/@torbengab/building-space-products-with-angular-22-part-4-managing-shopping-cart-state-with-ngrx-signalstore-3df79e614582?sharedUserId=torbengab)
 
 5. Part 5 – Building Reusable Components  
-   [Read on Medium](https://medium.com/@torbengab/building-space-donuts-with-angular-22-part-5-building-reusable-components-9968f280ed1f?sharedUserId=torbengab)
+   [Read on Medium](https://medium.com/@torbengab/building-space-products-with-angular-22-part-5-building-reusable-components-9968f280ed1f?sharedUserId=torbengab)
 
 6. Part 6 – Building the Shopping Cart and Understanding Computed Signals  
-   [Read on Medium](https://medium.com/@torbengab/building-space-donuts-with-angular-22-part-5-building-the-shopping-cart-and-understanding-aa31be48e21a?sharedUserId=torbengab)
+   [Read on Medium](https://medium.com/@torbengab/building-space-products-with-angular-22-part-5-building-the-shopping-cart-and-understanding-aa31be48e21a?sharedUserId=torbengab)
 
 7. Part 7 – Adding a Floating Cart Button to Our Angular 22 Shop  
    [Read on Medium](https://medium.com/@torbengab/adding-a-floating-cart-button-to-our-angular-22-shop-b3e40c119ac7?sharedUserId=torbengab)
@@ -78,8 +78,8 @@ Each article explores a specific topic, explains the decisions behind the implem
 Clone the repository:
 
 ```bash
-git clone https://github.com/torbengabriel/space-donuts.git
-cd space-donuts
+git clone https://github.com/torbengabriel/space-products.git
+cd space-products
 ```
 
 Install the dependencies:
