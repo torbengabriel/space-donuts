@@ -2,31 +2,31 @@ import { computed } from '@angular/core';
 import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals';
 
 interface FavoritesState {
-  donutIds: number[];
+  favoriteProductIds: number[];
   isOpen: boolean;
 }
 
 export const FavoritesStore = signalStore(
   { providedIn: 'root' },
 
-  withState<FavoritesState>({ donutIds: [], isOpen: false }),
+  withState<FavoritesState>({ favoriteProductIds: [], isOpen: false }),
 
-  withComputed(({ donutIds }) => ({
-    count: computed(() => donutIds().length),
-    isEmpty: computed(() => donutIds().length === 0),
+  withComputed(({ favoriteProductIds }) => ({
+    count: computed(() => favoriteProductIds().length),
+    isEmpty: computed(() => favoriteProductIds().length === 0),
   })),
 
   withMethods((store) => {
-    const isFavorite = (donutId: number): boolean => store.donutIds().includes(donutId);
+    const isFavorite = (donutId: number): boolean => store.favoriteProductIds().includes(donutId);
 
     return {
       isFavorite,
 
       toggle(donutId: number): void {
         patchState(store, {
-          donutIds: isFavorite(donutId)
-            ? store.donutIds().filter((id) => id !== donutId)
-            : [...store.donutIds(), donutId],
+          favoriteProductIds: isFavorite(donutId)
+            ? store.favoriteProductIds().filter((id) => id !== donutId)
+            : [...store.favoriteProductIds(), donutId],
         });
       },
 

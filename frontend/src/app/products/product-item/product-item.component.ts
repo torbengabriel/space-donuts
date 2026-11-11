@@ -18,6 +18,6 @@ export class ProductItem {
   protected readonly favoritesStore = inject(FavoritesStore);
 
   protected readonly isFavorite = computed(() =>
-    this.favoritesStore.donutIds().includes(this.product().id),
+    this.favoritesStore.favoriteProductIds().includes(this.product().id),
   );
 }
