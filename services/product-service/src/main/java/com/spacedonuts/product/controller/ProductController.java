@@ -12,7 +12,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/donuts")
+@RequestMapping("/api/products")
 public class ProductController {
 
   private final ProductService productService;
@@ -40,11 +40,11 @@ public class ProductController {
   public ResponseEntity<ProductResponse> create(
     @Valid @RequestBody ProductCreateRequest request
   ) {
-    ProductResponse createdDonut = productService.create(request);
+    ProductResponse createdProduct = productService.create(request);
 
-    URI location = URI.create("/api/donuts/" + createdDonut.id());
+    URI location = URI.create("/api/products/" + createdProduct.id());
 
-    return ResponseEntity.created(location).body(createdDonut);
+    return ResponseEntity.created(location).body(createdProduct);
   }
 
   @PutMapping("/{id}")
@@ -52,8 +52,8 @@ public class ProductController {
     @PathVariable Long id,
     @Valid @RequestBody ProductCreateRequest request
   ) {
-    ProductResponse updatedDonut = productService.update(id, request);
-    return ResponseEntity.ok(updatedDonut);
+    ProductResponse updatedProduct = productService.update(id, request);
+    return ResponseEntity.ok(updatedProduct);
   }
 
   @DeleteMapping("/{id}")
