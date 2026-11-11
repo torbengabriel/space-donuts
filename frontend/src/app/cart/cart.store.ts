@@ -26,7 +26,7 @@ export const CartStore = signalStore(
   })),
 
   withMethods((store) => ({
-    addDonut(product: Product): void {
+    addProduct(product: Product): void {
       const existingItem = store.items().find((item) => item.product.id === product.id);
 
       if (existingItem) {
