@@ -2,7 +2,7 @@
   <button
     class="add-to-cart-button"
     type="button"
-    [attr.aria-label]="`Add ${product().title} to cart`"
+    [attr.aria-label]="`Add ${product().name} to cart`"
     (click)="cartStore.addDonut(product())"
   >
     <svg lucideShoppingCart [size]="20" aria-hidden="true"></svg>

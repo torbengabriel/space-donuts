@@ -6,8 +6,8 @@ import { ProductService } from '../services/product.service';
 import { ProductList } from './product-list.component';
 
 const donuts: Product[] = [
-  { id: 1, title: 'Glazed', description: 'Sweet', price: 2.5, image: 'glazed.png' },
-  { id: 2, title: 'Choco', description: 'Rich', price: 3, image: 'choco.png' },
+  { id: 1, name: 'Glazed', description: 'Sweet', price: 2.5, image: 'glazed.png' },
+  { id: 2, name: 'Choco', description: 'Rich', price: 3, image: 'choco.png' },
 ];
 
 describe('DonutList', () => {

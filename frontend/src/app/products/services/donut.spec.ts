@@ -24,7 +24,7 @@ describe('DonutService', () => {
 
   it('loads the products from the json file', () => {
     const donuts: Product[] = [
-      { id: 1, title: 'Glazed', description: 'Sweet', price: 2.5, image: 'glazed.png' },
+      { id: 1, name: 'Glazed', description: 'Sweet', price: 2.5, image: 'glazed.png' },
     ];
     let result: Product[] | undefined;
 

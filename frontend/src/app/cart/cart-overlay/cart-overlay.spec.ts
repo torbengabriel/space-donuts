@@ -6,12 +6,12 @@ import { CartOverlay } from './cart-overlay';
 
 const glazed: Product = {
   id: 1,
-  title: 'Glazed',
+  name: 'Glazed',
   description: 'Sweet',
   price: 2.5,
   imageUrl: 'glazed.png',
 };
-const choco: Product = { id: 2, title: 'Choco', description: 'Rich', price: 3, imageUrl: 'choco.png' };
+const choco: Product = { id: 2, name: 'Choco', description: 'Rich', price: 3, imageUrl: 'choco.png' };
 
 describe('CartOverlay', () => {
   let fixture: ComponentFixture<CartOverlay>;

@@ -10,7 +10,7 @@ describe('DonutItem', () => {
 
   const donut: Product = {
     id: 1,
-    title: 'Glazed',
+    name: 'Glazed',
     description: 'Sweet',
     price: 2.5,
     image: 'glazed.png',

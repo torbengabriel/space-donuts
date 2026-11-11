@@ -3,8 +3,8 @@ import { TestBed } from '@angular/core/testing';
 import { Product } from '../products/product.model';
 import { CartStore } from './cart.store';
 
-const glazed: Product = { id: 1, title: 'Glazed', price: 2.5 } as Product;
-const choco: Product = { id: 2, title: 'Choco', price: 3 } as Product;
+const glazed: Product = { id: 1, name: 'Glazed', price: 2.5 } as Product;
+const choco: Product = { id: 2, name: 'Choco', price: 3 } as Product;
 
 describe('CartStore', () => {
   let store: InstanceType<typeof CartStore>;
