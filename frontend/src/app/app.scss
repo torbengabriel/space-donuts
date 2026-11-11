@@ -96,21 +96,28 @@
   }
 }
 
-/* Section beneath the hero */
-.donut-section {
-  padding: 24px 6%;
-  background: #fff8fd;
-  color: #241139;
+.shop-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
 }
 
-.donut-section h2 {
+/* Section beneath the hero */
+.product-section {
+  color: #241139;
+  margin-top: 2rem;
+}
+
+.product-section h2 {
   margin: 0 0 12px;
   text-align: center;
   font-size: clamp(28px, 3vw, 42px);
   font-weight: 900;
 }
 
-.donut-section .section-description {
+.product-section .section-description {
   max-width: 620px;
   margin: 0 auto;
   color: #6b5877;
@@ -184,7 +191,7 @@
     padding: 65px 7% 58px;
   }
 
-  .donut-section {
+  .product-section {
     padding: 42px 6% 56px;
   }
 }

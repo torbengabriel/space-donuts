@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+
+mat-tab-group {
+  --mat-tab-header-active-focus-indicator-color: #ff4fc8;
+  --mat-tab-header-active-hover-indicator-color: #ff4fc8;
+  --mat-tab-header-active-indicator-color: #ff4fc8;
+}

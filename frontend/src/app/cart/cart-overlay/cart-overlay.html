@@ -6,12 +6,12 @@
   } @else {
     <!-- role="list" is intentional: Safari/VoiceOver drops list semantics when list-style: none is set -->
     <ul class="cart-items" role="list">
-      @for (item of cartStore.items(); track item.donut.id) {
+      @for (item of cartStore.items(); track item.product.id) {
         <li>
           <app-cart-line
             [item]="item"
-            (quantityIncreased)="cartStore.increaseQuantity(item.donut.id)"
-            (quantityDecreased)="cartStore.decreaseQuantity(item.donut.id)"
+            (quantityIncreased)="cartStore.increaseQuantity(item.product.id)"
+            (quantityDecreased)="cartStore.decreaseQuantity(item.product.id)"
           />
         </li>
       }

@@ -28,7 +28,7 @@ describe('FavoritesButton', () => {
     store.toggle(2);
     await fixture.whenStable();
 
-    expect(element.querySelector('button')!.getAttribute('aria-label')).toBe('Favorites, 2 donuts');
+    expect(element.querySelector('button')!.getAttribute('aria-label')).toBe('Favorites, 2 products');
   });
 
   it('shows the number of favorites in the badge', async () => {

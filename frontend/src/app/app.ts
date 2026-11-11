@@ -9,23 +9,24 @@ import {
   viewChild,
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { DonutList } from './donuts/donut-list/donut-list';
+import { ProductList } from './products/product-list/product-list.component';
 import { Header } from './header/header';
 import { CartButton } from './cart/cart-button/cart-button';
 import { CartOverlay } from './cart/cart-overlay/cart-overlay';
 import { CartStore } from './cart/cart.store';
 import { SearchOverlay } from './search/search-overlay/search-overlay';
 import { FavoritesOverlay } from './favorites/favorites-overlay/favorites-overlay';
+import { ProductCategoryTabsComponent } from './shared/product-category-tabs/product-category-tabs';
 
 @Component({
   imports: [
     RouterOutlet,
-    DonutList,
     Header,
     CartButton,
     CartOverlay,
     SearchOverlay,
     FavoritesOverlay,
+    ProductCategoryTabsComponent,
   ],
   selector: 'app-root',
   styleUrl: './app.scss',

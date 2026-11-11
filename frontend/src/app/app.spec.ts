@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 
 import { App } from './app';
 import { CartStore } from './cart/cart.store';
-import { DonutService } from './donuts/services/donut';
+import { ProductService } from './products/services/product.service';
 
 class MockIntersectionObserver {
   static instance: MockIntersectionObserver;
@@ -31,7 +31,7 @@ describe('App', () => {
       imports: [App],
       providers: [
         provideRouter([]),
-        { provide: DonutService, useValue: { getDonuts: () => of([]) } },
+        { provide: ProductService, useValue: { getDonuts: () => of([]) } },
       ],
     }).compileComponents();
 
@@ -59,6 +59,6 @@ describe('App', () => {
 
     element.querySelector<HTMLButtonElement>('.sticky-cart button')!.click();
 
-    expect(TestBed.inject(CartStore).isCartOpen()).toBe(true);
+    expect(TestBed.inject(CartStore).isOpen()).toBe(true);
   });
 });

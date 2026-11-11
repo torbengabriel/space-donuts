@@ -1,0 +1,17 @@
+<section class="product-section" id="products">
+  @if (productStore.isLoading()) {
+    <div class="loading-container">
+      <output>Loading products…</output>
+    </div>
+  } @else if (productStore.hasError()) {
+    <p role="alert">Products could not be loaded. Please try again later.</p>
+  } @else {
+    <ul class="product-list">
+      @for (product of products(); track product.id) {
+        <li>
+          <app-product-item [product]="product" />
+        </li>
+      }
+    </ul>
+  }
+</section>

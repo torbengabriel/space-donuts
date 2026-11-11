@@ -4,7 +4,7 @@ import { CartItem } from '../../cart-item.model';
 import { CartLine } from './cart-line';
 
 const item: CartItem = {
-  donut: { id: 1, title: 'Glazed', description: 'Sweet', price: 2.5, image: 'glazed.png' },
+  product: { id: 1, title: 'Glazed', description: 'Sweet', price: 2.5, imageUrl: 'glazed.png' },
   quantity: 3,
 };
 

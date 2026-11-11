@@ -1,8 +1,8 @@
 <div class="cart-item">
-  <img class="cart-item-image" [src]="item().donut.image" [alt]="item().donut.title" />
+  <img class="cart-item-image" [src]="item().product.imageUrl" [alt]="item().product.title" />
 
   <h3 class="cart-item-title">
-    {{ item().donut.title }}
+    {{ item().product.title }}
   </h3>
 
   <app-quantity-selector

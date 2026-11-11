@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { LucideShoppingCart } from '@lucide/angular';
 import { QuantitySelector } from '../../shared/quantity-selector/quantity-selector';
-import { Donut } from '../../donuts/donut.model';
+import { Product } from '../../products/product.model';
 import { CartStore } from '../cart.store';
 
 @Component({
@@ -12,11 +12,11 @@ import { CartStore } from '../cart.store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddToCart {
-  readonly donut = input.required<Donut>();
+  readonly product = input.required<Product>();
 
   protected readonly cartStore = inject(CartStore);
 
   protected readonly quantity = computed(
-    () => this.cartStore.items().find((item) => item.donut.id === this.donut().id)?.quantity ?? 0,
+    () => this.cartStore.items().find((item) => item.product.id === this.product().id)?.quantity ?? 0,
   );
 }

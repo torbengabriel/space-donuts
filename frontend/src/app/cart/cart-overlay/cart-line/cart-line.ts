@@ -13,7 +13,7 @@ export class CartLine {
   readonly item = input.required<CartItem>();
 
   protected readonly itemTotalPrice = computed(
-    () => this.item().donut.price * this.item().quantity,
+    () => this.item().product.price * this.item().quantity,
   );
 
   readonly quantityIncreased = output<void>();

@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Donut } from '../../donuts/donut.model';
+import { Product } from '../../products/product.model';
 import { CartStore } from '../cart.store';
 import { CartOverlay } from './cart-overlay';
 
-const glazed: Donut = {
+const glazed: Product = {
   id: 1,
   title: 'Glazed',
   description: 'Sweet',
   price: 2.5,
-  image: 'glazed.png',
+  imageUrl: 'glazed.png',
 };
-const choco: Donut = { id: 2, title: 'Choco', description: 'Rich', price: 3, image: 'choco.png' };
+const choco: Product = { id: 2, title: 'Choco', description: 'Rich', price: 3, imageUrl: 'choco.png' };
 
 describe('CartOverlay', () => {
   let fixture: ComponentFixture<CartOverlay>;

@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Donut } from '../donuts/donut.model';
+import { Product } from '../products/product.model';
 import { CartStore } from './cart.store';
 
-const glazed: Donut = { id: 1, title: 'Glazed', price: 2.5 } as Donut;
-const choco: Donut = { id: 2, title: 'Choco', price: 3 } as Donut;
+const glazed: Product = { id: 1, title: 'Glazed', price: 2.5 } as Product;
+const choco: Product = { id: 2, title: 'Choco', price: 3 } as Product;
 
 describe('CartStore', () => {
   let store: InstanceType<typeof CartStore>;
@@ -16,7 +16,7 @@ describe('CartStore', () => {
   it('starts empty and closed', () => {
     expect(store.items()).toEqual([]);
     expect(store.isEmpty()).toBe(true);
-    expect(store.isCartOpen()).toBe(false);
+    expect(store.isOpen()).toBe(false);
     expect(store.totalPrice()).toBe(0);
     expect(store.totalQuantity()).toBe(0);
   });
@@ -37,7 +37,7 @@ describe('CartStore', () => {
       expect(store.items()[0].quantity).toBe(2);
     });
 
-    it('keeps different donuts as separate items', () => {
+    it('keeps different products as separate items', () => {
       store.addDonut(glazed);
       store.addDonut(choco);
 
@@ -99,10 +99,10 @@ describe('CartStore', () => {
   describe('cart visibility', () => {
     it('opens and closes the cart', () => {
       store.openCart();
-      expect(store.isCartOpen()).toBe(true);
+      expect(store.isOpen()).toBe(true);
 
       store.closeCart();
-      expect(store.isCartOpen()).toBe(false);
+      expect(store.isOpen()).toBe(false);
     });
   });
 });

@@ -1,6 +1,6 @@
-import { Donut } from '../donuts/donut.model';
+import { Product } from '../products/product.model';
 
 export interface CartItem {
-  donut: Donut;
+  product: Product;
   quantity: number;
 }
