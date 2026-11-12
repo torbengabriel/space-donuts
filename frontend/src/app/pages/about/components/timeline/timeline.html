@@ -1,0 +1,51 @@
+<div class="timeline-wrapper">
+  <div class="timeline">
+
+    @for (item of items(); track item.id; let i = $index) {
+
+      <article
+        class="timeline-item"
+        [class.top]="i % 2 === 0"
+        [class.bottom]="i % 2 !== 0"
+      >
+
+        <div class="timeline-content">
+
+          @if (item.imageUrl) {
+            <img
+              class="timeline-image"
+              [src]="item.imageUrl"
+              [alt]="item.title"
+              loading="lazy"
+            />
+          }
+
+          <span class="timeline-date">
+            {{ item.date }}
+          </span>
+
+          <h3>{{ item.title }}</h3>
+
+          <p>{{ item.description }}</p>
+
+        </div>
+
+        <button
+          class="timeline-marker"
+          [style.--marker-color]="item.color || '#ec4899'"
+          [attr.aria-label]="'Meilenstein: ' + item.title"
+          (click)="selectItem(item)"
+        >
+          @if (item.icon) {
+            <span>{{ item.icon }}</span>
+          } @else {
+            <span class="marker-dot"></span>
+          }
+        </button>
+
+      </article>
+
+    }
+
+  </div>
+</div>
