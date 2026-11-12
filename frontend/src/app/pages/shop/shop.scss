@@ -1,0 +1,35 @@
+.shop-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+/* Section beneath the hero */
+.product-section {
+  color: #241139;
+  margin-top: 2rem;
+}
+
+.product-section h2 {
+  margin: 0 0 12px;
+  text-align: center;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 900;
+}
+
+.product-section .section-description {
+  max-width: 620px;
+  margin: 0 auto;
+  color: #6b5877;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .product-section {
+    padding: 42px 6% 56px;
+  }
+}

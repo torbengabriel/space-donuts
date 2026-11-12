@@ -9,6 +9,6 @@ import { TimelineComponent } from './components/timeline/timeline';
   templateUrl: './about.html',
   styleUrl: './about.scss',
 })
-export class AboutComponent {
+export class About {
   protected readonly history = SPACE_DONUTS_HISTORY;
 }
