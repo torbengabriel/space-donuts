@@ -4,11 +4,12 @@ import {
   LOCALE_ID,
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
+import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 
 registerLocaleData(localeDe);
 
@@ -16,7 +17,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([loadingInterceptor])),
     { provide: LOCALE_ID, useValue: 'de-DE' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },
   ],

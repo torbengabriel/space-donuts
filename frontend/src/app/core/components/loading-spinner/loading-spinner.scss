@@ -1,0 +1,32 @@
+
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  background: rgba(15, 10, 25, 0.85);
+  backdrop-filter: blur(5px);
+
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.donut-spinner {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  animation: donut-spin 1.5s linear infinite;
+}
+
+@keyframes donut-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

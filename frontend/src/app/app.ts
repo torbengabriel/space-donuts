@@ -15,6 +15,7 @@ import { CartOverlay } from './cart/cart-overlay/cart-overlay';
 import { CartStore } from './cart/cart.store';
 import { SearchOverlay } from './search/search-overlay/search-overlay';
 import { FavoritesOverlay } from './favorites/favorites-overlay/favorites-overlay';
+import { LoadingSpinnerComponent } from './core/components/loading-spinner/loading-spinner';
 
 @Component({
   imports: [
@@ -24,6 +25,7 @@ import { FavoritesOverlay } from './favorites/favorites-overlay/favorites-overla
     CartOverlay,
     SearchOverlay,
     FavoritesOverlay,
+    LoadingSpinnerComponent,
   ],
   selector: 'app-root',
   styleUrl: './app.scss',
