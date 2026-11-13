@@ -4,6 +4,7 @@ import { CartButton } from '../cart/cart-button/cart-button';
 import { FavoritesButton } from '../favorites/favorites-button/favorites-button';
 import { SearchButton } from '../search/search-button/search-button';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthStore } from '../features/auth/store/auth.store';
 
 @Component({
   imports: [CartButton, FavoritesButton, SearchButton, RouterLink, RouterLinkActive],
@@ -12,5 +13,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './header.html',
 })
 export class Header {
-  readonly cartStore = inject(CartStore);
+  protected readonly cartStore = inject(CartStore);
+  protected readonly authStore = inject(AuthStore);
 }
