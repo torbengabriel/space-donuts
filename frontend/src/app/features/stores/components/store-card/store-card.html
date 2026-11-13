@@ -1,0 +1,44 @@
+
+<article class="store-card">
+  <div class="store-image">
+    <img [src]="store().imageUrl" [alt]="store().name" />
+
+    <span
+      class="store-status"
+      [class.open]="store().openingHours[today()] !== null"
+      [class.closed]="store().openingHours[today()] === null"
+    >
+      @if (store().openingHours[today()]) {
+        Open today
+      } @else {
+        Closed today
+      }
+    </span>
+  </div>
+
+  <div class="store-content">
+    <div class="store-heading">
+      <h2>{{ store().city }}</h2>
+      <span class="store-name">{{ store().name }}</span>
+    </div>
+
+    <div class="store-address">
+      <span class="icon">⌖</span>
+      <p>{{ store().address }}</p>
+    </div>
+
+    <div class="store-hours">
+      <span class="icon">◷</span>
+      @if (store().openingHours[today()]; as hours) {
+        <p>Today: {{ hours }}</p>
+      } @else {
+        <p>Closed today</p>
+      }
+    </div>
+
+    <button class="directions-button" type="button">
+      Get directions
+      <span>↗</span>
+    </button>
+  </div>
+</article>

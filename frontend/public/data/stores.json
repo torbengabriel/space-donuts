@@ -1,0 +1,104 @@
+[
+  {
+    "id": "berlin",
+    "name": "Space Donuts Berlin",
+    "city": "Berlin",
+    "address": "Alexanderplatz 12, 10178 Berlin",
+    "imageUrl": "/images/stores/berlin.png",
+    "closedDay": "MONDAY",
+    "openingHours": {
+      "MONDAY": null,
+      "TUESDAY": "09:00-19:00",
+      "WEDNESDAY": "09:00-19:00",
+      "THURSDAY": "09:00-19:00",
+      "FRIDAY": "09:00-20:00",
+      "SATURDAY": "09:00-20:00",
+      "SUNDAY": "10:00-18:00"
+    }
+  },
+  {
+    "id": "hamburg",
+    "name": "Space Donuts Hamburg",
+    "city": "Hamburg",
+    "address": "Jungfernstieg 8, 20354 Hamburg",
+    "imageUrl": "/images/stores/hamburg.png",
+    "closedDay": "TUESDAY",
+    "openingHours": {
+      "MONDAY": "09:00-19:00",
+      "TUESDAY": null,
+      "WEDNESDAY": "09:00-19:00",
+      "THURSDAY": "09:00-19:00",
+      "FRIDAY": "09:00-20:00",
+      "SATURDAY": "09:00-20:00",
+      "SUNDAY": "10:00-18:00"
+    }
+  },
+  {
+    "id": "cologne",
+    "name": "Space Donuts Cologne",
+    "city": "Cologne",
+    "address": "Domkloster 4, 50667 Cologne",
+    "imageUrl": "/images/stores/cologne.png",
+    "closedDay": "WEDNESDAY",
+    "openingHours": {
+      "MONDAY": "09:00-19:00",
+      "TUESDAY": "09:00-19:00",
+      "WEDNESDAY": null,
+      "THURSDAY": "09:00-19:00",
+      "FRIDAY": "09:00-20:00",
+      "SATURDAY": "09:00-20:00",
+      "SUNDAY": "10:00-18:00"
+    }
+  },
+  {
+    "id": "amsterdam",
+    "name": "Space Donuts Amsterdam",
+    "city": "Amsterdam",
+    "address": "Prinsengracht 120, 1015 EA Amsterdam",
+    "imageUrl": "/images/stores/amsterdam.png",
+    "closedDay": "THURSDAY",
+    "openingHours": {
+      "MONDAY": "09:00-19:00",
+      "TUESDAY": "09:00-19:00",
+      "WEDNESDAY": "09:00-19:00",
+      "THURSDAY": null,
+      "FRIDAY": "09:00-20:00",
+      "SATURDAY": "09:00-20:00",
+      "SUNDAY": "10:00-18:00"
+    }
+  },
+  {
+    "id": "london",
+    "name": "Space Donuts London",
+    "city": "London",
+    "address": "12 Piccadilly Circus, London W1J 0DA",
+    "imageUrl": "/images/stores/london.png",
+    "closedDay": "FRIDAY",
+    "openingHours": {
+      "MONDAY": "09:00-19:00",
+      "TUESDAY": "09:00-19:00",
+      "WEDNESDAY": "09:00-19:00",
+      "THURSDAY": "09:00-19:00",
+      "FRIDAY": null,
+      "SATURDAY": "09:00-20:00",
+      "SUNDAY": "10:00-18:00"
+    }
+  },
+  {
+    "id": "paris",
+    "name": "Space Donuts Paris",
+    "city": "Paris",
+    "address": "18 Rue de Rivoli, 75004 Paris",
+    "imageUrl": "/images/stores/paris.png",
+    "closedDay": "SATURDAY",
+    "openingHours": {
+      "MONDAY": "09:00-19:00",
+      "TUESDAY": "09:00-19:00",
+      "WEDNESDAY": "09:00-19:00",
+      "THURSDAY": "09:00-19:00",
+      "FRIDAY": "09:00-20:00",
+      "SATURDAY": null,
+      "SUNDAY": "10:00-18:00"
+    }
+  }
+]

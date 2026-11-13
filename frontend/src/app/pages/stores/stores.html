@@ -1,0 +1,9 @@
+<section class="stores-grid">
+  @if (stores$ | async; as stores) {
+    @for (store of stores; track store.id) {
+      <app-store-card [store]="store" />
+    }
+  } @else {
+    <p>Loading stores...</p>
+  }
+</section>
