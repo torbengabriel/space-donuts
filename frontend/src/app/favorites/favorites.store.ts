@@ -3,13 +3,12 @@ import { patchState, signalStore, withComputed, withMethods, withState } from '@
 
 interface FavoritesState {
   favoriteProductIds: number[];
-  isOpen: boolean;
 }
 
 export const FavoritesStore = signalStore(
   { providedIn: 'root' },
 
-  withState<FavoritesState>({ favoriteProductIds: [], isOpen: false }),
+  withState<FavoritesState>({ favoriteProductIds: [] }),
 
   withComputed(({ favoriteProductIds }) => ({
     count: computed(() => favoriteProductIds().length),
@@ -28,14 +27,6 @@ export const FavoritesStore = signalStore(
             ? store.favoriteProductIds().filter((id) => id !== donutId)
             : [...store.favoriteProductIds(), donutId],
         });
-      },
-
-      openFavorites(): void {
-        patchState(store, { isOpen: true });
-      },
-
-      closeFavorites(): void {
-        patchState(store, { isOpen: false });
       },
     };
   }),

@@ -1,0 +1,28 @@
+@if (overlayStore.activeOverlay()) {
+  <app-overlay
+    [open]="true"
+    (closed)="overlayStore.close()"
+  >
+    @switch (overlayStore.activeOverlay()) {
+      @case ('login') {
+        <app-login-overlay />
+      }
+
+      @case ('profile') {
+        <app-profile-overlay />
+      }
+
+      @case ('cart') {
+        <app-cart-overlay />
+      }
+
+      @case ('favorites') {
+        <app-favorites-overlay />
+      }
+
+      @case ('search') {
+        <app-search-overlay />
+      }
+    }
+  </app-overlay>
+}

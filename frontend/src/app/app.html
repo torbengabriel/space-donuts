@@ -4,7 +4,7 @@
 
 @if (showStickyCart()) {
   <div class="sticky-cart">
-    <app-cart-button (clicked)="cartStore.openCart()" />
+    <app-cart-button (clicked)="overlayStore.open('cart')" />
   </div>
 }
 
@@ -12,9 +12,6 @@
   <router-outlet />
 </main>
 
-<app-search-overlay />
-<app-favorites-overlay />
-<app-cart-overlay />
-<app-login-overlay />
+<app-overlay-container />
 
 <app-loading-spinner />

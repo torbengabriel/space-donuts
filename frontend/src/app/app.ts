@@ -11,23 +11,17 @@ import {
 import { RouterOutlet } from '@angular/router';
 import { Header } from './header/header';
 import { CartButton } from './cart/cart-button/cart-button';
-import { CartOverlay } from './cart/cart-overlay/cart-overlay';
-import { CartStore } from './cart/cart.store';
-import { SearchOverlay } from './search/search-overlay/search-overlay';
-import { FavoritesOverlay } from './favorites/favorites-overlay/favorites-overlay';
 import { LoadingSpinnerComponent } from './core/components/loading-spinner/loading-spinner';
-import { LoginOverlay } from './features/auth/login-overlay/login-overlay';
+import { OverlayContainer } from './shared/overlays/overlay-container/overlay-container';
+import { OverlayStore } from './core/overlay/overlay.store';
 
 @Component({
   imports: [
     RouterOutlet,
     Header,
     CartButton,
-    CartOverlay,
-    SearchOverlay,
-    FavoritesOverlay,
     LoadingSpinnerComponent,
-    LoginOverlay,
+    OverlayContainer,
   ],
   selector: 'app-root',
   styleUrl: './app.scss',
@@ -35,7 +29,7 @@ import { LoginOverlay } from './features/auth/login-overlay/login-overlay';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {
-  protected readonly cartStore = inject(CartStore);
+  protected readonly overlayStore = inject(OverlayStore);
   protected readonly showStickyCart = signal(false);
 
   private readonly header = viewChild.required('headerElement', { read: ElementRef<HTMLElement> });

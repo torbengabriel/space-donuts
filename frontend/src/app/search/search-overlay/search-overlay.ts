@@ -1,9 +1,8 @@
 import { Component, effect, ElementRef, inject, viewChild } from '@angular/core';
-import { Overlay } from '../../shared/overlay/overlay';
 import { SearchStore } from '../search.store';
 
 @Component({
-  imports: [Overlay],
+  imports: [],
   selector: 'app-search-overlay',
   styleUrl: './search-overlay.scss',
   templateUrl: './search-overlay.html',

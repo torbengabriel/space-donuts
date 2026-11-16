@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { SearchStore } from '../search.store';
 import { LucideSearch } from '@lucide/angular';
+import { OverlayStore } from '../../core/overlay/overlay.store';
 
 @Component({
   imports: [LucideSearch],
@@ -9,5 +9,5 @@ import { LucideSearch } from '@lucide/angular';
   templateUrl: './search-button.html',
 })
 export class SearchButton {
-  protected readonly searchStore = inject(SearchStore);
+  protected readonly overlayStore = inject(OverlayStore);
 }

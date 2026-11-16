@@ -1,26 +1,24 @@
-<app-overlay [open]="cartStore.isOpen()" (closed)="cartStore.closeCart()">
-  <h2>Shopping Cart</h2>
+<h2>Shopping Cart</h2>
 
-  @if (cartStore.isEmpty()) {
-    <p>Your shopping cart is empty.</p>
-  } @else {
-    <!-- role="list" is intentional: Safari/VoiceOver drops list semantics when list-style: none is set -->
-    <ul class="cart-items" role="list">
-      @for (item of cartStore.items(); track item.product.id) {
-        <li>
-          <app-cart-line
-            [item]="item"
-            (quantityIncreased)="cartStore.increaseQuantity(item.product.id)"
-            (quantityDecreased)="cartStore.decreaseQuantity(item.product.id)"
-          />
-        </li>
-      }
-    </ul>
+@if (cartStore.isEmpty()) {
+  <p>Your shopping cart is empty.</p>
+} @else {
+  <!-- role="list" is intentional: Safari/VoiceOver drops list semantics when list-style: none is set -->
+  <ul class="cart-items" role="list">
+    @for (item of cartStore.items(); track item.product.id) {
+      <li>
+        <app-cart-line
+          [item]="item"
+          (quantityIncreased)="cartStore.increaseQuantity(item.product.id)"
+          (quantityDecreased)="cartStore.decreaseQuantity(item.product.id)"
+        />
+      </li>
+    }
+  </ul>
 
-    <div class="cart-footer">
-      <span class="cart-total-label">Total</span>
+  <div class="cart-footer">
+    <span class="cart-total-label">Total</span>
 
-      <span class="cart-total-price">{{ cartStore.totalPrice() | currency }}</span>
-    </div>
-  }
-</app-overlay>
+    <span class="cart-total-price">{{ cartStore.totalPrice() | currency }}</span>
+  </div>
+}

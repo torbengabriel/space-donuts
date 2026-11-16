@@ -1,25 +1,22 @@
-<app-overlay [open]="authStore.isOpen()" (closed)="authStore.closeLogin()">
-  <div class="login-overlay">
-    <div class="login-content">
-      <div class="login-icon">
-        <svg lucideUserRound [size]="32"></svg>
-      </div>
+<div class="login-overlay">
+  <div class="login-content">
+    <div class="login-icon">
+      <svg lucideUserRound [size]="32"></svg>
+    </div>
 
-      <h2>Welcome back!</h2>
-      <p>Your next cosmic adventure starts here.</p>
+    <h2>Welcome back!</h2>
+    <p>Your next cosmic adventure starts here.</p>
 
-      <button
-        class="keycloak-button"
-        (click)="login()"
-      >
-        <svg lucideLogIn [size]="20"></svg>
-        Continue with Keycloak
-      </button>
+    <button
+      class="keycloak-button"
+      (click)="login()"
+    >
+      <svg lucideLogIn [size]="20"></svg>
+      Continue with Keycloak
+    </button>
 
-      <span class="login-footer">
+    <span class="login-footer">
       SECURE LOGIN · SPACE DONUTS
     </span>
-    </div>
   </div>
-
-</app-overlay>
+</div>
