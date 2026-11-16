@@ -1,13 +1,25 @@
-<app-overlay [open]="authStore.isOpen()">
+<app-overlay [open]="authStore.isOpen()" (closed)="authStore.closeLogin()">
   <div class="login-overlay">
-    <h2>Welcome back!</h2>
+    <div class="login-content">
+      <div class="login-icon">
+        <svg lucideUserRound [size]="32"></svg>
+      </div>
 
-    <p>
-      Sign in to your Space Donuts account.
-    </p>
+      <h2>Welcome back!</h2>
+      <p>Your next cosmic adventure starts here.</p>
 
-    <button (click)="login()">
-      Continue with Keycloak
-    </button>
+      <button
+        class="keycloak-button"
+        (click)="login()"
+      >
+        <svg lucideLogIn [size]="20"></svg>
+        Continue with Keycloak
+      </button>
+
+      <span class="login-footer">
+      SECURE LOGIN · SPACE DONUTS
+    </span>
+    </div>
   </div>
+
 </app-overlay>

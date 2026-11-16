@@ -19,6 +19,32 @@
 
     <app-cart-button (clicked)="cartStore.openCart()" />
 
-    <button class="sign-in-button" (click)="authStore.openLogin()">Sign In</button>
+    @if (authService.isLoggedIn) {
+      <c-dropdown>
+        <button class="profile-button" cButton cDropdownToggle (click)="onProfileClick()">
+          <svg lucideUserRound [size]="24"></svg>
+        </button>
+        <ul cDropdownMenu>
+          <button
+            cDropdownItem
+            type="button"
+            (click)="openProfileOverlay()"
+          >
+            My Profile
+          </button>
+          <button
+            cDropdownItem
+            type="button"
+            (click)="logout()"
+          >
+            Logout
+          </button>
+        </ul>
+      </c-dropdown>
+    } @else {
+      <button class="sign-in-button" (click)="authStore.openLogin()">
+        Sign In
+      </button>
+    }
   </div>
 </header>

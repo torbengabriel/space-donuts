@@ -1,0 +1,67 @@
+.login-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  h2 {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 18px 0 8px;
+    color: #242436;
+  }
+
+  p {
+    color: #777789;
+    margin: 0 0 30px;
+  }
+}
+
+.login-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  color: #f044c8;
+  background: #fff0fa;
+}
+
+.keycloak-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 9px;
+  background: #f044c8;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    background: #d92eae;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(240, 68, 200, 0.2);
+  }
+}
+
+.login-footer {
+  margin-top: 28px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #aaaab8;
+}

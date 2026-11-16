@@ -14,7 +14,7 @@ export class ProductService {
 
   getProducts(category: ProductCategory): Observable<Product[]> {
     //return this.http.get<Product[]>('/data/products.json');
-    return this.http.get<Product[]>(`${this.apiUrl}/donuts`, {
+    return this.http.get<Product[]>(`${this.apiUrl}/products`, {
       params: { category },
     });
   }
