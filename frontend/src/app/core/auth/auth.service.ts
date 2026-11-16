@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import Keycloak from 'keycloak-js';
 import { environment } from '../../../environments/environment';
+import { UserProfile } from '../../features/profile/profile.model';
 
 @Injectable({
   providedIn: 'root',
@@ -53,5 +54,20 @@ export class AuthService {
     await this.keycloak.updateToken(30);
 
     return this.keycloak.token ?? null;
+  }
+
+  async getUserProfile(): Promise<UserProfile | null> {
+    if (!this.keycloak.authenticated) {
+      return null;
+    }
+
+    try {
+      await this.keycloak.updateToken(30);
+
+      return await this.keycloak.loadUserProfile();
+    } catch (error) {
+      console.error('Could not load user profile', error);
+      return null;
+    }
   }
 }
