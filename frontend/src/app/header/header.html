@@ -9,6 +9,9 @@
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Shop</a>
     <a routerLink="/stores" routerLinkActive="active" class="nav-link">Stores</a>
     <a routerLink="/about" routerLinkActive="active" class="nav-link">About</a>
+    @if (authService.hasRole('ADMIN')) {
+      <a routerLink="/admin" routerLinkActive="active" class="nav-link">Admin</a>
+    }
   </nav>
 
   <!-- Shopping actions -->
