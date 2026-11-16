@@ -36,28 +36,6 @@
   background: #fff0fa;
 }
 
-.keycloak-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-  padding: 15px;
-  border: none;
-  border-radius: 9px;
-  background: #f044c8;
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s;
-
-  &:hover {
-    background: #d92eae;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(240, 68, 200, 0.2);
-  }
-}
 
 .login-footer {
   margin-top: 28px;

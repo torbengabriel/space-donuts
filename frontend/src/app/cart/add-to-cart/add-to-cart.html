@@ -1,6 +1,6 @@
 @if (quantity() === 0) {
   <button
-    class="add-to-cart-button"
+    class="btn-primary add-to-cart-button"
     type="button"
     [attr.aria-label]="`Add ${product().name} to cart`"
     (click)="cartStore.addProduct(product())"
