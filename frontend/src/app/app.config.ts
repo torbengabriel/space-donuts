@@ -14,13 +14,21 @@ import localeDe from '@angular/common/locales/de';
 import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 import { AuthService } from './core/auth/auth.service';
 import { authInterceptor } from './core/auth/auth.interceptor';
+import { CartStore } from './features/cart/store/cart.store';
 
 registerLocaleData(localeDe);
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideAppInitializer(() => {
-      return inject(AuthService).init();
+    provideAppInitializer(async () => {
+      const authService = inject(AuthService);
+      const cartStore = inject(CartStore);
+
+      const authenticated = await authService.init();
+
+      if (authenticated) {
+        await cartStore.loadCart();
+      }
     }),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),

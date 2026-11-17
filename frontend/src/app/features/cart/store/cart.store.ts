@@ -1,11 +1,15 @@
-import { computed } from '@angular/core';
+import { computed, inject } from '@angular/core';
 import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals';
 
 import { Product } from '../../products/models/product.model';
 import { CartItem } from '../models/cart-item.model';
+import { CartService } from '../services/cart.service';
+import { firstValueFrom } from 'rxjs';
 
 interface CartState {
   items: CartItem[];
+  cartId: number | null;
+  status: 'idle' | 'loading' | 'loaded' | 'error';
 }
 
 export const CartStore = signalStore(
@@ -13,6 +17,8 @@ export const CartStore = signalStore(
 
   withState<CartState>({
     items: [],
+    cartId: null,
+    status: 'idle',
   }),
 
   withComputed(({ items }) => ({
@@ -23,7 +29,29 @@ export const CartStore = signalStore(
     ),
   })),
 
-  withMethods((store) => ({
+  withMethods((store, cartService = inject(CartService)) => ({
+    async loadCart(): Promise<void> {
+      patchState(store, { status: 'loading' });
+
+      try {
+        const cart = await firstValueFrom(
+          cartService.getCart()
+        );
+
+        patchState(store, {
+          cartId: cart.id,
+          items: cart.items,
+          status: 'loaded'
+        });
+      } catch (error) {
+        console.error('Could not load cart', error);
+
+        patchState(store, {
+          status: 'error'
+        });
+      }
+    },
+
     addProduct(product: Product): void {
       const existingItem = store.items().find((item) => item.product.id === product.id);
 
