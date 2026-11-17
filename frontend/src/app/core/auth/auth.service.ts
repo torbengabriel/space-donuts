@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import Keycloak from 'keycloak-js';
 import { environment } from '../../../environments/environment';
-import { UserProfile } from '../../features/profile/profile.model';
+import { UserProfile } from '../../features/profile/models/profile.model';
 
 @Injectable({
   providedIn: 'root',

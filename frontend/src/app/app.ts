@@ -9,8 +9,8 @@ import {
   viewChild,
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Header } from './header/header';
-import { CartButton } from './cart/cart-button/cart-button';
+import { Header } from './layout/header/header';
+import { CartButton } from './features/cart/components/cart-button/cart-button';
 import { LoadingSpinnerComponent } from './core/components/loading-spinner/loading-spinner';
 import { OverlayContainer } from './shared/overlays/overlay-container/overlay-container';
 import { OverlayStore } from './core/overlay/overlay.store';

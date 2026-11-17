@@ -3,8 +3,8 @@ import { provideRouter } from '@angular/router';
 import { of } from 'rxjs';
 
 import { App } from './app';
-import { CartStore } from './cart/cart.store';
-import { ProductService } from './products/services/product.service';
+import { CartStore } from './features/cart/store/cart.store';
+import { ProductService } from './features/products/services/product.service';
 
 class MockIntersectionObserver {
   static instance: MockIntersectionObserver;

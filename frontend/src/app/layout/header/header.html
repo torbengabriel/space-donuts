@@ -1,0 +1,53 @@
+<header class="navbar">
+  <!-- Brand logo -->
+  <a class="logo" href="/public" aria-label="Space Donuts Home">
+    <img src="/images/space-donuts-logo.png" alt="Space Donuts" />
+  </a>
+
+  <!-- Main navigation -->
+  <nav class="navigation" aria-label="Main navigation">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Shop</a>
+    <a routerLink="/stores" routerLinkActive="active" class="nav-link">Stores</a>
+    <a routerLink="/about" routerLinkActive="active" class="nav-link">About</a>
+    @if (authService.hasRole('ADMIN')) {
+      <a routerLink="/admin" routerLinkActive="active" class="nav-link">Admin</a>
+    }
+  </nav>
+
+  <!-- Shopping actions -->
+  <div class="nav-actions">
+    <app-search-button />
+
+    <app-favorites-button />
+
+    <app-cart-button (clicked)="overlayStore.open('cart')" />
+
+    @if (authService.isLoggedIn) {
+      <c-dropdown>
+        <button class="profile-button" cButton cDropdownToggle>
+          <svg lucideUserRound [size]="24"></svg>
+        </button>
+        <ul cDropdownMenu>
+          <button
+            cDropdownItem
+            type="button"
+            (click)="overlayStore.open('profile')"
+          >
+            My Profile
+          </button>
+          <button
+            cDropdownItem
+            type="button"
+            (click)="authService.logout()"
+          >
+            Logout
+          </button>
+        </ul>
+      </c-dropdown>
+    } @else {
+      <button class="btn-primary" (click)="overlayStore.open('login')">
+        Sign In
+      </button>
+    }
+  </div>
+</header>
