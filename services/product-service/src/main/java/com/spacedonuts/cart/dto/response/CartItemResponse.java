@@ -1,4 +1,4 @@
-package com.spacedonuts.cart.dto;
+package com.spacedonuts.cart.dto.response;
 
 import java.math.BigDecimal;
 
