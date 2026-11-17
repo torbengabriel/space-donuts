@@ -1,6 +1,6 @@
-package cart.repository;
+package com.spacedonuts.cart.repository;
 
-import cart.entity.Cart;
+import com.spacedonuts.cart.entity.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

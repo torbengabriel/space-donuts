@@ -1,7 +1,7 @@
-package cart.controller;
+package com.spacedonuts.cart.controller;
 
-import cart.dto.CartResponse;
-import cart.service.CartService;
+import com.spacedonuts.cart.dto.CartResponse;
+import com.spacedonuts.cart.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;

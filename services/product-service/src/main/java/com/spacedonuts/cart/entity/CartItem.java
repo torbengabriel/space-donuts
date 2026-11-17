@@ -1,4 +1,4 @@
-package cart.entity;
+package com.spacedonuts.cart.entity;
 
 import com.spacedonuts.product.entity.Product;
 import jakarta.persistence.*;

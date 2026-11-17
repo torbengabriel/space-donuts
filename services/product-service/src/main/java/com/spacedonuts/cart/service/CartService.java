@@ -1,8 +1,8 @@
-package cart.service;
+package com.spacedonuts.cart.service;
 
-import cart.dto.CartResponse;
-import cart.entity.Cart;
-import cart.repository.CartRepository;
+import com.spacedonuts.cart.dto.CartResponse;
+import com.spacedonuts.cart.entity.Cart;
+import com.spacedonuts.cart.repository.CartRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
