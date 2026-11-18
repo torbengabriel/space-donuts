@@ -24,11 +24,9 @@ export const appConfig: ApplicationConfig = {
       const authService = inject(AuthService);
       const cartStore = inject(CartStore);
 
-      const authenticated = await authService.init();
+      await authService.init();
 
-      if (authenticated) {
-        await cartStore.loadCart();
-      }
+      cartStore.loadCart();
     }),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),

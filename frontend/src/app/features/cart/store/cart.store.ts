@@ -3,13 +3,16 @@ import { patchState, signalStore, withComputed, withMethods, withState } from '@
 
 import { Product } from '../../products/models/product.model';
 import { CartItem } from '../models/cart-item.model';
-import { CartService } from '../services/cart.service';
-import { firstValueFrom } from 'rxjs';
+import { CartApiService } from '../services/cart-api.service';
+import { CartItemResponse, CartResponse } from '../models/cart.model';
+import { AuthService } from '../../../core/auth/auth.service';
+import { GuestCartService } from '../services/guest-cart.service';
 
 interface CartState {
   items: CartItem[];
   cartId: number | null;
   status: 'idle' | 'loading' | 'loaded' | 'error';
+  isGuestCart: boolean;
 }
 
 export const CartStore = signalStore(
@@ -19,6 +22,7 @@ export const CartStore = signalStore(
     items: [],
     cartId: null,
     status: 'idle',
+    isGuestCart: true,
   }),
 
   withComputed(({ items }) => ({
@@ -29,68 +33,189 @@ export const CartStore = signalStore(
     ),
   })),
 
-  withMethods((store, cartService = inject(CartService)) => ({
-    async loadCart(): Promise<void> {
-      patchState(store, { status: 'loading' });
+  withMethods(
+    (
+      store,
+      cartApi = inject(CartApiService),
+      guestCart = inject(GuestCartService),
+      auth = inject(AuthService),
+    ) => {
 
-      try {
-        const cart = await firstValueFrom(
-          cartService.getCart()
-        );
+      const mapBackendItems = (items: CartItemResponse[]): CartItem[] =>
+        items.map(item => ({
+          product: {
+            id: item.productId,
+            name: item.productName,
+            imageUrl: item.imageUrl,
+            price: item.price
+          } as Product,
+          quantity: item.quantity
+        }));
 
-        patchState(store, {
-          cartId: cart.id,
-          items: cart.items,
-          status: 'loaded'
-        });
-      } catch (error) {
-        console.error('Could not load cart', error);
+      return {
+        loadCart(): void {
+          if (auth.isLoggedIn) {
+            const guestItems = guestCart.getCart();
 
-        patchState(store, {
-          status: 'error'
-        });
-      }
+            if (guestItems.length > 0) {
+              this.mergeGuestCart();
+            } else {
+              this.loadBackendCart();
+            }
+          } else {
+            this.loadGuestCart();
+          }
+        },
+
+        loadGuestCart(): void {
+          const items = guestCart.getCart();
+
+          patchState(store, {
+            items,
+            cartId: null,
+            isGuestCart: true,
+            status: 'loaded'
+          });
+        },
+
+        loadBackendCart(): void {
+          cartApi.getCart().subscribe({
+            next: (cart: CartResponse) => {
+              patchState(store, {
+                items: mapBackendItems(cart.items),
+                cartId: cart.id,
+                isGuestCart: false,
+                status: 'loaded'
+              });
+            },
+            error: () => patchState(store, { status: 'error' })
+          });
+        },
+
+        addItem(product: Product): void {
+          if (auth.isLoggedIn) {
+            cartApi.addItem(product.id, 1).subscribe({
+              next: (cart: CartResponse) => {
+                patchState(store, {
+                  items: mapBackendItems(cart.items),
+                  cartId: cart.id,
+                  isGuestCart: false,
+                  status: 'loaded'
+                });
+              },
+              error: () => patchState(store, { status: 'error' })
+            });
+          } else {
+            const updatedItems = guestCart.addItem(product);
+
+            patchState(store, {
+              items: updatedItems,
+              isGuestCart: true,
+              status: 'loaded'
+            });
+          }
+        },
+
+        updateQuantity(productId: number, quantity: number): void {
+          if (quantity < 1) {
+            this.removeItem(productId);
+            return;
+          }
+
+          if (auth.isLoggedIn) {
+            const item = store.items().find(
+              item => item.product.id === productId
+            );
+
+            if (!item?.product.id) {
+              return;
+            }
+
+            cartApi.updateQuantity(item.product.id, quantity).subscribe({
+              next: (cart: CartResponse) => {
+                patchState(store, {
+                  items: mapBackendItems(cart.items),
+                  cartId: cart.id,
+                  status: 'loaded'
+                });
+              },
+              error: () => patchState(store, { status: 'error' })
+            });
+          } else {
+            const updatedItems = guestCart.updateQuantity(productId, quantity);
+
+            patchState(store, {
+              items: updatedItems,
+              status: 'loaded'
+            });
+          }
+        },
+
+        removeItem(productId: number): void {
+          if (auth.isLoggedIn) {
+            const item = store.items().find(
+              item => item.product.id === productId
+            );
+
+            if (!item?.product.id) {
+              return;
+            }
+
+            cartApi.removeItem(item.product.id).subscribe({
+              next: (cart: CartResponse) => {
+                patchState(store, {
+                  items: mapBackendItems(cart.items),
+                  cartId: cart.id,
+                  isGuestCart: false,
+                  status: 'loaded'
+                });
+              },
+              error: () => patchState(store, { status: 'error' })
+            });
+          } else {
+            const updatedItems = guestCart.removeItem(productId);
+
+            patchState(store, {
+              items: updatedItems,
+              isGuestCart: true,
+              status: 'loaded'
+            });
+          }
+        },
+
+        mergeGuestCart(): void {
+          const guestItems = guestCart.getCart();
+
+          if (guestItems.length === 0) {
+            this.loadCart();
+            return;
+          }
+
+          cartApi.mergeCart(guestItems).subscribe({
+            next: (cart) => {
+              patchState(store, {
+                items: cart.items.map((item: CartItemResponse) => ({
+                  product: {
+                    id: item.id,
+                    name: item.productName,
+                    imageUrl: item.imageUrl,
+                    price: item.price,
+                  } as Product,
+                  quantity: item.quantity,
+                })),
+                cartId: cart.id,
+                isGuestCart: false,
+                status: 'loaded',
+              });
+
+              guestCart.clearCart();
+            },
+            error: () => {
+              patchState(store, { status: 'error' });
+            },
+          });
+        },
+      };
     },
-
-    addProduct(product: Product): void {
-      const existingItem = store.items().find((item) => item.product.id === product.id);
-
-      if (existingItem) {
-        patchState(store, {
-          items: store
-            .items()
-            .map((item) =>
-              item.product.id === product.id ? { ...item, quantity: item.quantity + 1 } : item,
-            ),
-        });
-
-        return;
-      }
-
-      patchState(store, {
-        items: [...store.items(), { product, quantity: 1 }],
-      });
-    },
-
-    increaseQuantity(donutId: number): void {
-      patchState(store, {
-        items: store
-          .items()
-          .map((item) =>
-            item.product.id === donutId ? { ...item, quantity: item.quantity + 1 } : item,
-          ),
-      });
-    },
-
-    decreaseQuantity(donutId: number): void {
-      patchState(store, {
-        items: store
-          .items()
-          .map((item) =>
-            item.product.id === donutId ? { ...item, quantity: item.quantity - 1 } : item,
-          )
-          .filter((item) => item.quantity > 0),
-      });
-    },
-  })),
+  ),
 );

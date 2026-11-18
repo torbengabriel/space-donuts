@@ -7,16 +7,20 @@ import { Component, input, output } from '@angular/core';
   templateUrl: './quantity-selector.html',
 })
 export class QuantitySelector {
-  readonly quantity = input.required<number>();
+  public quantity = input<number>(1);
+  protected readonly quantityChange = output<number>();
+  protected readonly remove = output<void>();
 
-  readonly increment = output<void>();
-  readonly decrement = output<void>();
-
-  increaseQuantity(): void {
-    this.increment.emit();
+  protected increaseQuantity(): void {
+    this.quantityChange.emit(this.quantity() + 1);
   }
 
-  decreaseQuantity(): void {
-    this.decrement.emit();
+  protected decreaseQuantity(): void {
+    if (this.quantity() === 1) {
+      this.remove.emit();
+      //return;
+    }
+
+    this.quantityChange.emit(this.quantity() - 1);
   }
 }

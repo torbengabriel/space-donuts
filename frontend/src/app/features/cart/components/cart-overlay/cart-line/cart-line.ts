@@ -10,12 +10,12 @@ import { CartItem } from '../../../models/cart-item.model';
   templateUrl: './cart-line.html',
 })
 export class CartLine {
-  readonly item = input.required<CartItem>();
+  public readonly item = input.required<CartItem>();
 
   protected readonly itemTotalPrice = computed(
     () => this.item().product.price * this.item().quantity,
   );
 
-  readonly quantityIncreased = output<void>();
-  readonly quantityDecreased = output<void>();
+  readonly quantityChange = output<number>();
+  readonly remove = output<void>();
 }

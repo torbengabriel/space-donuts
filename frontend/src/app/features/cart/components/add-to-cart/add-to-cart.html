@@ -3,14 +3,14 @@
     class="btn-primary add-to-cart-button"
     type="button"
     [attr.aria-label]="`Add ${product().name} to cart`"
-    (click)="cartStore.addProduct(product())"
+    (click)="cartStore.addItem(product())"
   >
     <svg lucideShoppingCart [size]="20" aria-hidden="true"></svg>
   </button>
 } @else {
   <app-quantity-selector
     [quantity]="quantity()"
-    (increment)="cartStore.increaseQuantity(product().id)"
-    (decrement)="cartStore.decreaseQuantity(product().id)"
+    (quantityChange)="cartStore.updateQuantity(product().id, $event)"
+    (remove)="cartStore.removeItem(product().id)"
   />
 }

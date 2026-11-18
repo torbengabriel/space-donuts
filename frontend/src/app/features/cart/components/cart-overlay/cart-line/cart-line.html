@@ -7,8 +7,8 @@
 
   <app-quantity-selector
     [quantity]="item().quantity"
-    (increment)="quantityIncreased.emit()"
-    (decrement)="quantityDecreased.emit()"
+    (quantityChange)="quantityChange.emit($event)"
+    (remove)="remove.emit()"
   />
 
   <span class="cart-item-price">

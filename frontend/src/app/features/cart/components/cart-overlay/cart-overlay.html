@@ -9,8 +9,8 @@
       <li>
         <app-cart-line
           [item]="item"
-          (quantityIncreased)="cartStore.increaseQuantity(item.product.id)"
-          (quantityDecreased)="cartStore.decreaseQuantity(item.product.id)"
+          (quantityChange)="cartStore.updateQuantity(item.product.id, item.quantity)"
+          (remove)="cartStore.removeItem(item.product.id)"
         />
       </li>
     }
