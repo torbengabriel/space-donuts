@@ -1,7 +1,9 @@
 package com.spacedonuts.cart.service;
 
 import com.spacedonuts.cart.dto.request.CartItemCreateRequest;
+import com.spacedonuts.cart.dto.request.CartItemMergeRequest;
 import com.spacedonuts.cart.dto.request.CartItemUpdateRequest;
+import com.spacedonuts.cart.dto.request.CartMergeRequest;
 import com.spacedonuts.cart.dto.response.CartItemResponse;
 import com.spacedonuts.cart.dto.response.CartResponse;
 import com.spacedonuts.cart.entity.Cart;
@@ -9,6 +11,7 @@ import com.spacedonuts.cart.entity.CartItem;
 import com.spacedonuts.cart.repository.CartRepository;
 import com.spacedonuts.product.entity.Product;
 import com.spacedonuts.product.repository.ProductRepository;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -107,6 +110,47 @@ public class CartService {
     Cart cart = getCartEntity(keycloakUserId);
 
     cart.getItems().clear();
+  }
+
+  @Transactional
+  public CartResponse mergeCart(
+    String keycloakUserId,
+    CartMergeRequest request
+  ) {
+    Cart cart = getOrCreateCart(keycloakUserId);
+
+    for (CartItemMergeRequest requestItem : request.items()) {
+
+      Product product = productRepository.findById(requestItem.productId())
+        .orElseThrow(() -> new EntityNotFoundException(
+          "Product not found: " + requestItem.productId()
+        ));
+
+      if (!product.isAvailable()) {
+        throw new IllegalArgumentException(
+          "Product is not available: " + product.getName()
+        );
+      }
+
+      CartItem existingItem = cart.getItems().stream()
+        .filter(item -> item.getProduct().getId().equals(product.getId()))
+        .findFirst()
+        .orElse(null);
+
+      if (existingItem != null) {
+        existingItem.setQuantity(
+          existingItem.getQuantity() + requestItem.quantity()
+        );
+      } else {
+        CartItem newItem = new CartItem();
+        newItem.setProduct(product);
+        newItem.setQuantity(requestItem.quantity());
+
+        cart.addItem(newItem);
+      }
+    }
+
+    return mapToResponse(cart);
   }
 
   private Cart getOrCreateCart(String keycloakUserId) {

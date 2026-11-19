@@ -29,10 +29,15 @@ services:
       DB_URL: jdbc:mysql://mysql:3306/product_db
       DB_USERNAME: product_service
       PRODUCT_DB_PASSWORD: ${PRODUCT_DB_PASSWORD}
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_USER: ${RABBITMQ_USER}
+      RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD}
     ports:
       - "8081:8081"
     depends_on:
       mysql:
+        condition: service_healthy
+      rabbitmq:
         condition: service_healthy
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health/readiness"]
@@ -76,6 +81,24 @@ services:
       keycloak-db:
         condition: service_healthy
 
+  rabbitmq:
+    image: rabbitmq:4-management
+    container_name: space-donuts-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: [ "CMD", "rabbitmq-diagnostics", "-q", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
 volumes:
   mysql_data:
   keycloak_db_data:
+  rabbitmq_data:

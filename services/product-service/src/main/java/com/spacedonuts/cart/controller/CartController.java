@@ -2,6 +2,7 @@ package com.spacedonuts.cart.controller;
 
 import com.spacedonuts.cart.dto.request.CartItemCreateRequest;
 import com.spacedonuts.cart.dto.request.CartItemUpdateRequest;
+import com.spacedonuts.cart.dto.request.CartMergeRequest;
 import com.spacedonuts.cart.dto.response.CartResponse;
 import com.spacedonuts.cart.service.CartService;
 import jakarta.validation.Valid;
@@ -66,5 +67,13 @@ public class CartController {
     @AuthenticationPrincipal Jwt jwt
   ) {
     cartService.clearCart(jwt.getSubject());
+  }
+
+  @PostMapping("/merge")
+  public CartResponse mergeCart(
+    @AuthenticationPrincipal Jwt jwt,
+    @Valid @RequestBody CartMergeRequest request
+  ) {
+    return cartService.mergeCart(jwt.getSubject(), request);
   }
 }

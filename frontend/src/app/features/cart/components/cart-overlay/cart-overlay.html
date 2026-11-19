@@ -20,5 +20,9 @@
     <span class="cart-total-label">Total</span>
 
     <span class="cart-total-price">{{ cartStore.totalPrice() | currency }}</span>
+
+    <div>
+      <button (click)="checkout()">Order now</button>
+    </div>
   </div>
 }
