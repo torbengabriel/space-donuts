@@ -107,6 +107,17 @@
   }
 }
 
+.notification-toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 10000;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 @keyframes cart-appear {
   from {
     opacity: 0;

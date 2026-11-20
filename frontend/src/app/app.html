@@ -15,3 +15,13 @@
 <app-overlay-container />
 
 <app-loading-spinner />
+
+<div class="notification-toast-container">
+  @if (notificationStore.activeToast(); as toast) {
+    <app-notification-toast
+      [title]="toast.title"
+      [message]="toast.message"
+      (closed)="notificationStore.dismissToast()"
+    />
+  }
+</div>

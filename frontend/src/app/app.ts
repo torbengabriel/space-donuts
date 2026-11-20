@@ -14,6 +14,8 @@ import { CartButton } from './features/cart/components/cart-button/cart-button';
 import { LoadingSpinnerComponent } from './core/components/loading-spinner/loading-spinner';
 import { OverlayContainer } from './shared/overlays/overlay-container/overlay-container';
 import { OverlayStore } from './core/overlay/overlay.store';
+import { NotificationToast } from './features/notifications/components/notification-toast/notification-toast';
+import { NotificationStore } from './features/notifications/store/notification.store';
 
 @Component({
   imports: [
@@ -22,6 +24,7 @@ import { OverlayStore } from './core/overlay/overlay.store';
     CartButton,
     LoadingSpinnerComponent,
     OverlayContainer,
+    NotificationToast,
   ],
   selector: 'app-root',
   styleUrl: './app.scss',
@@ -29,6 +32,8 @@ import { OverlayStore } from './core/overlay/overlay.store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {
+  public readonly notificationStore = inject(NotificationStore);
+
   protected readonly overlayStore = inject(OverlayStore);
   protected readonly showStickyCart = signal(false);
 

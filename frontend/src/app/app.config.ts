@@ -15,6 +15,7 @@ import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 import { AuthService } from './core/auth/auth.service';
 import { authInterceptor } from './core/auth/auth.interceptor';
 import { CartStore } from './features/cart/store/cart.store';
+import { NotificationWebSocketService } from './features/notifications/services/notification-websocket.service';
 
 registerLocaleData(localeDe);
 
@@ -23,10 +24,15 @@ export const appConfig: ApplicationConfig = {
     provideAppInitializer(async () => {
       const authService = inject(AuthService);
       const cartStore = inject(CartStore);
+      const notificationWebSocket = inject(NotificationWebSocketService);
 
       await authService.init();
 
       cartStore.loadCart();
+
+      if (authService.isLoggedIn) {
+        await notificationWebSocket.connect();
+      }
     }),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
