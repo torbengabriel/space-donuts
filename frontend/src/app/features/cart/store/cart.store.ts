@@ -166,7 +166,7 @@ export const CartStore = signalStore(
               return;
             }
 
-            cartApi.removeItem(item.product.id).subscribe({
+            cartApi.removeItem(item.id!).subscribe({
               next: (cart: CartResponse) => {
                 patchState(store, {
                   items: mapBackendItems(cart.items),

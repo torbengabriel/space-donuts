@@ -1,71 +1,301 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, computed, input, output, signal } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { CurrencyPipe } from '@angular/common';
+import { of, throwError } from 'rxjs';
 
-import { Product } from '../../../products/models/product.model';
-import { CartStore } from '../../store/cart.store';
 import { CartOverlay } from './cart-overlay';
-
-const glazed: Product = {
-  id: 1,
-  name: 'Glazed',
-  description: 'Sweet',
-  price: 2.5,
-  imageUrl: 'glazed.png',
-};
-const choco: Product = { id: 2, name: 'Choco', description: 'Rich', price: 3, imageUrl: 'choco.png' };
+import { CartStore } from '../../store/cart.store';
+import { CartLine } from './cart-line/cart-line';
+import { CartItem } from '../../models/cart-item.model';
+import { OrderApiService } from '../../../order/services/order-api.service';
+import { OverlayStore } from '../../../../core/overlay/overlay.store';
 
 describe('CartOverlay', () => {
-  let fixture: ComponentFixture<CartOverlay>;
-  let store: InstanceType<typeof CartStore>;
-  let element: HTMLElement;
+  let cartStore: {
+    items: ReturnType<typeof signal<CartItem[]>>;
+    isEmpty: ReturnType<typeof computed<boolean>>;
+    totalPrice: ReturnType<typeof computed<number>>;
+    updateQuantity: ReturnType<typeof vi.fn>;
+    removeItem: ReturnType<typeof vi.fn>;
+    loadCart: ReturnType<typeof vi.fn>;
+  };
+
+  let orderService: {
+    checkout: ReturnType<typeof vi.fn>;
+  };
+
+  let overlayStore: {
+    close: ReturnType<typeof vi.fn>;
+  };
+
+  const product1 = {
+    id: 1,
+    name: 'Chocolate Donut',
+    price: 2.5,
+  };
+
+  const product2 = {
+    id: 2,
+    name: 'Vanilla Donut',
+    price: 3.5,
+  };
+
+  const cartItem1 = {
+    id: 101,
+    product: product1,
+    quantity: 2,
+  } as CartItem;
+
+  const cartItem2 = {
+    id: 102,
+    product: product2,
+    quantity: 1,
+  } as CartItem;
+
+  @Component({
+    selector: 'app-cart-line',
+    standalone: true,
+    template: '',
+  })
+  class MockCartLine {
+    item = input<CartItem>();
+    quantityChange = output<number>();
+    remove = output<void>();
+  }
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({ imports: [CartOverlay] }).compileComponents();
+    const items = signal<CartItem[]>([]);
 
-    store = TestBed.inject(CartStore);
-    store.openCart();
+    cartStore = {
+      items,
+      isEmpty: computed(() => items().length === 0),
+      totalPrice: computed(() =>
+        items().reduce((total, item) => total + item.product.price * item.quantity, 0),
+      ),
+      updateQuantity: vi.fn(),
+      removeItem: vi.fn(),
+      loadCart: vi.fn(),
+    };
 
-    fixture = TestBed.createComponent(CartOverlay);
-    await fixture.whenStable();
-    element = fixture.nativeElement;
+    orderService = {
+      checkout: vi.fn().mockReturnValue(of({ id: 1 })),
+    };
+
+    overlayStore = {
+      close: vi.fn(),
+    };
+
+    TestBed.configureTestingModule({
+      imports: [CartOverlay],
+      providers: [
+        { provide: CartStore, useValue: cartStore },
+        { provide: OrderApiService, useValue: orderService },
+        { provide: OverlayStore, useValue: overlayStore },
+      ],
+    });
+
+    TestBed.overrideComponent(CartOverlay, {
+      remove: {
+        imports: [CartLine],
+      },
+      add: {
+        imports: [MockCartLine],
+      },
+    });
+
+    await TestBed.compileComponents();
   });
 
-  it('shows the empty message when the cart is empty', () => {
-    expect(element.textContent).toContain('Your shopping cart is empty.');
-    expect(element.querySelectorAll('app-cart-line').length).toBe(0);
+  function createComponent() {
+    const fixture = TestBed.createComponent(CartOverlay);
+    fixture.detectChanges();
+    return fixture;
+  }
+
+  describe('rendering', () => {
+    it('should render the shopping cart heading', () => {
+      const fixture = createComponent();
+
+      const heading: HTMLHeadingElement = fixture.nativeElement.querySelector('h2');
+
+      expect(heading.textContent).toContain('Shopping Cart');
+    });
+
+    it('should display the empty cart message when cart is empty', () => {
+      const fixture = createComponent();
+
+      expect(fixture.nativeElement.textContent).toContain('Your shopping cart is empty.');
+    });
+
+    it('should not render cart items when cart is empty', () => {
+      const fixture = createComponent();
+
+      expect(fixture.nativeElement.querySelector('.cart-items')).toBeNull();
+    });
+
+    it('should not render the cart footer when cart is empty', () => {
+      const fixture = createComponent();
+
+      expect(fixture.nativeElement.querySelector('.cart-footer')).toBeNull();
+    });
+
+    it('should render cart items when cart is not empty', () => {
+      cartStore.items.set([cartItem1]);
+
+      const fixture = createComponent();
+
+      expect(fixture.nativeElement.querySelector('.cart-items')).not.toBeNull();
+
+      expect(fixture.nativeElement.querySelector('.cart-footer')).not.toBeNull();
+    });
+
+    it('should not display the empty cart message when cart has items', () => {
+      cartStore.items.set([cartItem1]);
+
+      const fixture = createComponent();
+
+      expect(fixture.nativeElement.textContent).not.toContain('Your shopping cart is empty.');
+    });
   });
 
-  it('renders one line per cart item', async () => {
-    store.addDonut(glazed);
-    store.addDonut(choco);
-    await fixture.whenStable();
+  describe('cart items', () => {
+    it('should render one cart line for each item', () => {
+      cartStore.items.set([cartItem1, cartItem2]);
 
-    expect(element.querySelectorAll('app-cart-line').length).toBe(2);
-    expect(element.textContent).not.toContain('Your shopping cart is empty.');
+      const fixture = createComponent();
+
+      const cartLines = fixture.nativeElement.querySelectorAll('app-cart-line');
+
+      expect(cartLines.length).toBe(2);
+    });
+
+    it('should pass the correct item to each cart line', () => {
+      cartStore.items.set([cartItem1, cartItem2]);
+
+      const fixture = createComponent();
+
+      const cartLines = fixture.debugElement.queryAll(
+        (element) => element.componentInstance instanceof MockCartLine,
+      );
+
+      expect(cartLines[0].componentInstance.item()).toEqual(cartItem1);
+      expect(cartLines[1].componentInstance.item()).toEqual(cartItem2);
+    });
+
+    it('should render cart lines inside a list', () => {
+      cartStore.items.set([cartItem1]);
+
+      const fixture = createComponent();
+
+      const list = fixture.nativeElement.querySelector('.cart-items');
+
+      expect(list.tagName).toBe('UL');
+      expect(list.getAttribute('role')).toBe('list');
+      expect(list.querySelectorAll('li').length).toBe(1);
+    });
+
+    it('should call updateQuantity when quantityChange is emitted', () => {
+      cartStore.items.set([cartItem1]);
+
+      const fixture = createComponent();
+
+      const cartLine = fixture.debugElement.query(
+        (element) => element.componentInstance instanceof MockCartLine,
+      );
+
+      cartLine.componentInstance.quantityChange.emit(5);
+
+      expect(cartStore.updateQuantity).toHaveBeenCalledWith(1, 5);
+    });
+
+    it('should call removeItem when remove is emitted', () => {
+      cartStore.items.set([cartItem1]);
+
+      const fixture = createComponent();
+
+      const cartLine = fixture.debugElement.query(
+        (element) => element.componentInstance instanceof MockCartLine,
+      );
+
+      cartLine.componentInstance.remove.emit();
+
+      expect(cartStore.removeItem).toHaveBeenCalledWith(1);
+    });
   });
 
-  it('shows the total price', async () => {
-    store.addDonut(glazed);
-    store.addDonut(choco);
-    await fixture.whenStable();
+  describe('cart total', () => {
+    it('should display the total price', () => {
+      cartStore.items.set([cartItem1, cartItem2]);
 
-    expect(element.querySelector('.cart-total-price')!.textContent).toContain('5.50');
+      const fixture = createComponent();
+
+      expect(fixture.nativeElement.querySelector('.cart-total-price').textContent).toContain(
+        '8.50',
+      );
+    });
+
+    it('should display the total label', () => {
+      cartStore.items.set([cartItem1]);
+
+      const fixture = createComponent();
+
+      expect(fixture.nativeElement.querySelector('.cart-total-label').textContent).toContain(
+        'Total',
+      );
+    });
   });
 
-  it('removes the line when the quantity drops to 0', async () => {
-    store.addDonut(glazed);
-    await fixture.whenStable();
+  describe('checkout', () => {
+    it('should render the order button', () => {
+      cartStore.items.set([cartItem1]);
 
-    element.querySelector<HTMLButtonElement>('[aria-label="Decrease quantity"]')!.click();
-    await fixture.whenStable();
+      const fixture = createComponent();
 
-    expect(element.querySelectorAll('app-cart-line').length).toBe(0);
-    expect(element.textContent).toContain('Your shopping cart is empty.');
-  });
+      const button: HTMLButtonElement = fixture.nativeElement.querySelector('.cart-footer button');
 
-  it('renders nothing when closed', async () => {
-    store.openCart();
-    await fixture.whenStable();
+      expect(button).not.toBeNull();
+      expect(button.textContent).toContain('Order now');
+    });
 
-    expect(element.querySelector('h2')).toBeNull();
+    it('should call checkout when order button is clicked', () => {
+      cartStore.items.set([cartItem1]);
+
+      const fixture = createComponent();
+
+      const button: HTMLButtonElement = fixture.nativeElement.querySelector('.cart-footer button');
+
+      button.click();
+
+      expect(orderService.checkout).toHaveBeenCalledOnce();
+    });
+
+    it('should load the cart and close the overlay after successful checkout', () => {
+      const order = { id: 123 };
+
+      orderService.checkout.mockReturnValue(of(order));
+
+      const fixture = createComponent();
+      fixture.componentInstance.checkout();
+
+      expect(cartStore.loadCart).toHaveBeenCalledOnce();
+      expect(overlayStore.close).toHaveBeenCalledOnce();
+    });
+
+    it('should not close the overlay when checkout fails', () => {
+      const error = new Error('Checkout failed');
+
+      orderService.checkout.mockReturnValue(throwError(() => error));
+
+      const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+      const fixture = createComponent();
+      fixture.componentInstance.checkout();
+
+      expect(overlayStore.close).not.toHaveBeenCalled();
+      expect(cartStore.loadCart).not.toHaveBeenCalled();
+      expect(consoleErrorSpy).toHaveBeenCalledWith('Checkout failed', error);
+
+      consoleErrorSpy.mockRestore();
+    });
   });
 });

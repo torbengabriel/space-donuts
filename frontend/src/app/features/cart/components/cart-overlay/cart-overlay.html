@@ -9,7 +9,7 @@
       <li>
         <app-cart-line
           [item]="item"
-          (quantityChange)="cartStore.updateQuantity(item.product.id, item.quantity)"
+          (quantityChange)="cartStore.updateQuantity(item.product.id, $event)"
           (remove)="cartStore.removeItem(item.product.id)"
         />
       </li>

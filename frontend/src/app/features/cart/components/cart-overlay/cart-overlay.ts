@@ -18,12 +18,7 @@ export class CartOverlay {
 
   public checkout(): void {
     this.orderService.checkout().subscribe({
-      next: (order) => {
-        console.log('succcess order ', order);
-        // this.cartStore.clearCart();
-        // this.router.navigate(['/order-confirmation'], {
-        //   state: { order },
-        // });
+      next: () => {
         this.cartStore.loadCart();
         this.overlayStore.close();
       },
