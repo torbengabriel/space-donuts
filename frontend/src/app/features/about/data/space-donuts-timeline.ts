@@ -1,4 +1,4 @@
-import { TimelineItem } from '../pages/about/timeline.model';
+import { TimelineItem } from '../components/timeline/timeline.model';
 
 export const SPACE_DONUTS_HISTORY: TimelineItem[] = [
   {
