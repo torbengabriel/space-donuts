@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
 
-  // Nur Requests an unser Backend authentifizieren
+  // Authenticate only requests to our backend
   if (!req.url.startsWith(environment.apiUrl)) {
     return next(req);
   }

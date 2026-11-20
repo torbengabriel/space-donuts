@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import Keycloak from 'keycloak-js';
+
 import { environment } from '../../../environments/environment';
 import { UserProfile } from '../../features/profile/models/profile.model';
 
@@ -34,16 +35,8 @@ export class AuthService {
     return !!this.keycloak.authenticated;
   }
 
-  get username(): string | undefined {
-    return this.keycloak.tokenParsed?.['preferred_username'] as string | undefined;
-  }
-
   hasRole(role: string): boolean {
     return this.keycloak.hasRealmRole(role);
-  }
-
-  getToken(): string | undefined {
-    return this.keycloak.token;
   }
 
   async getValidToken(): Promise<string | null> {
@@ -51,15 +44,7 @@ export class AuthService {
       return null;
     }
 
-    //await this.keycloak.updateToken(30);
-
-    const refreshed = await this.keycloak.updateToken(30);
-
-    console.log('Token refresh result:', refreshed);
-    console.log(
-      'Token expiration:',
-      this.keycloak.tokenParsed?.exp ? new Date(this.keycloak.tokenParsed.exp * 1000) : null,
-    );
+    await this.keycloak.updateToken(30);
 
     return this.keycloak.token ?? null;
   }
@@ -71,7 +56,6 @@ export class AuthService {
 
     try {
       await this.keycloak.updateToken(30);
-
       return await this.keycloak.loadUserProfile();
     } catch (error) {
       console.error('Could not load user profile', error);
