@@ -43,6 +43,7 @@ export const CartStore = signalStore(
 
       const mapBackendItems = (items: CartItemResponse[]): CartItem[] =>
         items.map(item => ({
+          id: item.id,
           product: {
             id: item.productId,
             name: item.productName,
@@ -131,7 +132,11 @@ export const CartStore = signalStore(
               return;
             }
 
-            cartApi.updateQuantity(item.product.id, quantity).subscribe({
+            if (item.id === undefined) {
+              throw new Error('CartItem ID is missing');
+            }
+
+            cartApi.updateQuantity(item.id, quantity).subscribe({
               next: (cart: CartResponse) => {
                 patchState(store, {
                   items: mapBackendItems(cart.items),
@@ -195,8 +200,9 @@ export const CartStore = signalStore(
             next: (cart) => {
               patchState(store, {
                 items: cart.items.map((item: CartItemResponse) => ({
+                  id: item.id,
                   product: {
-                    id: item.id,
+                    id: item.productId,
                     name: item.productName,
                     imageUrl: item.imageUrl,
                     price: item.price,

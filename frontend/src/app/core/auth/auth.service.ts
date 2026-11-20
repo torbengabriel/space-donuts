@@ -51,7 +51,15 @@ export class AuthService {
       return null;
     }
 
-    await this.keycloak.updateToken(30);
+    //await this.keycloak.updateToken(30);
+
+    const refreshed = await this.keycloak.updateToken(30);
+
+    console.log('Token refresh result:', refreshed);
+    console.log(
+      'Token expiration:',
+      this.keycloak.tokenParsed?.exp ? new Date(this.keycloak.tokenParsed.exp * 1000) : null,
+    );
 
     return this.keycloak.token ?? null;
   }

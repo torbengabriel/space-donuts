@@ -20,8 +20,8 @@ export class CartApiService {
     return this.http.post<CartResponse>(`${this.apiUrl}/items`, { productId, quantity });
   }
 
-  public updateQuantity(itemId: number, quantity: number): Observable<CartResponse> {
-    return this.http.patch<CartResponse>(`${this.apiUrl}/items/${itemId}`, { quantity });
+  public updateQuantity(cartItemId: number, quantity: number): Observable<CartResponse> {
+    return this.http.patch<CartResponse>(`${this.apiUrl}/items/${cartItemId}`, { quantity });
   }
 
   public removeItem(itemId: number): Observable<CartResponse> {

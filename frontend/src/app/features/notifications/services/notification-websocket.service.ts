@@ -22,6 +22,19 @@ export class NotificationWebSocketService implements OnDestroy {
       return;
     }
 
+    const decoded = JSON.parse(atob(token.split('.')[1]));
+
+    console.log('WebSocket token details:', {
+      exp: new Date(decoded.exp * 1000),
+      iat: new Date(decoded.iat * 1000),
+      sub: decoded.sub,
+    });
+
+    console.log('Token received for WebSocket:', {
+      tokenExists: !!token,
+      tokenLength: token.length,
+    });
+
     this.client = new Client({
       brokerURL: 'ws://localhost:8081/ws',
 
