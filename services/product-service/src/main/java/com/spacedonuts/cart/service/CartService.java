@@ -74,6 +74,8 @@ public class CartService {
       cartItem.setQuantity(request.quantity());
 
       cart.addItem(cartItem);
+
+      cartRepository.flush();
     }
 
     return mapToResponse(cart);

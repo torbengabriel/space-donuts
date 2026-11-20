@@ -22,6 +22,7 @@ public class SecurityConfig {
         .requestMatchers(HttpMethod.GET, "/api/products", "/api/products/**").permitAll()
         .requestMatchers("/api/cart", "/api/cart/**").authenticated()
         .requestMatchers("/api/admin", "/api/admin/**").hasRole("ADMIN")
+        .requestMatchers("/ws", "/ws/**").permitAll()
         .anyRequest().authenticated()
       )
       .oauth2ResourceServer(oauth2 -> oauth2

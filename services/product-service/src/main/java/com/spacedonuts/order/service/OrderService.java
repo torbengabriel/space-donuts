@@ -126,7 +126,7 @@ public class OrderService {
   }
 
   @Transactional
-  public void markAsProcessing(Long orderId) {
+  public boolean markAsProcessing(Long orderId) {
     Order order = orderRepository.findById(orderId)
       .orElseThrow(() -> new EntityNotFoundException(
         "Order not found: " + orderId
@@ -138,7 +138,7 @@ public class OrderService {
         order.getOrderNumber(),
         order.getStatus()
       );
-      return;
+      return false;
     }
 
     order.setStatus(OrderStatus.PROCESSING);
@@ -147,5 +147,7 @@ public class OrderService {
       "Order {} status changed to PROCESSING",
       order.getOrderNumber()
     );
+
+    return true;
   }
 }
