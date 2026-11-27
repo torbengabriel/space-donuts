@@ -8,8 +8,10 @@ The goal is to explore modern web development concepts, experiment with differen
 
 ## Demo
 
-<!-- Replace the URL below with the GitHub video attachment URL. -->
-[Watch the Space Donuts demo](https://github.com/torbengabriel/space-donuts/blob/main/docs/demo/space-donuts-demo.mov)
+
+https://github.com/user-attachments/assets/502500d3-026a-4146-ab3e-6475ce0cc21e
+
+
 
 ## Screen Design
 
